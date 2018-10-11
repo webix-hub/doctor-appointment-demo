@@ -1,0 +1,64 @@
+/* toolbar */
+.toolbar_button button{
+	padding:0;
+	text-align:center;
+}
+.logo{
+	background:url(webix-logo.svg) 2px 2px no-repeat;
+}
+/* list of persons */
+.userphoto{
+	display:inline-block;
+	border-radius:25px;
+	width:48px;
+	height:48px;
+	float:left;
+}
+.text {
+	padding:4px 4px 4px 16px;
+	display:inline-block;
+}
+.username{
+	font-size:14px;
+	letter-spacing:0.2px;
+	color:#313131;
+	font-weight:500;
+	line-height:20px;
+	display:block;
+}
+.money{
+	color:#475466;
+	display:block;
+	letter-spacing:0.2px;
+	line-height:20px; 
+}
+.persons_list .webix_list_item,
+.persons_list .webix_list_item.webix_selected{
+	padding:8px 12px;
+}
+/* notifications */
+.notifications .webix_list_item,
+.notifications .webix_list_item.webix_selected{
+	line-height:20px;
+	padding:10px;
+}
+.notifications .webix_list_item .m_title{
+	font-weight:500;
+	color:#313131;
+}
+.notifications .webix_list_item .message{
+	display:block;
+	color:#475466;
+}
+/* form */
+.webix_view.form_photo > div{
+	padding:0px;
+}
+/* iframes */
+.webix_view.ifr_template .webix_template{
+	padding:0px;
+}
+/* headers (templates) */
+.webix_view.chart_header{
+	text-align: center;
+}
