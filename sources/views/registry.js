@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
 //import {allpayments} from "models/allpayments";
 
-export default class AllTActionsView extends JetView {
+export default class RegistryView extends JetView {
 	config(){
 		return {
 			view:"datatable",

@@ -1,14 +1,14 @@
 import "./styles/app.css";
-import {JetApp, EmptyRouter, HashRouter, plugins } from "webix-jet";
+import {JetApp, HashRouter, plugins } from "webix-jet";
 
 export default class MyApp extends JetApp{
 	constructor(config){
 		const defaults = {
 			id			: APPNAME,
 			version 	: VERSION,
-			router 		: BUILD_AS_MODULE ? EmptyRouter : HashRouter,
+			router 		: HashRouter,
 			debug 		: !PRODUCTION,
-			start 		: "/top/registry"
+			start 		: "/top/dashboard"
 		};
 
 		super({ ...defaults, ...config });
@@ -17,9 +17,8 @@ export default class MyApp extends JetApp{
 
 if (!BUILD_AS_MODULE){
 	webix.ready(() => {
-		if (!webix.env.touch && webix.ui.scrollSize && webix.CustomScroll)
+		if (!webix.env.touch && webix.env.scrollSize && webix.CustomScroll)
 			webix.CustomScroll.init();
-		const app = new MyApp();
-		app.render();
+		new MyApp().render();
 	});
 }

@@ -71,5 +71,6 @@ export default class PersonsView extends JetView {
 	init(){
 		const list = this.$$("list");
 		list.sync(persons);
+		persons.waitData.then(() => list.select(1));
 	}
 }

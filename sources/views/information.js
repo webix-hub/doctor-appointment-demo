@@ -1,10 +1,10 @@
 import {JetView} from "webix-jet";
 import "webix/photo";
+import {getPositions} from "models/positions";
 
 export default class InformationView extends JetView {
 	config(){
-		const left_main = {
-			gravity:3,
+		const controls = {
 			minWidth:200,
 			margin:10,
 			rows:[
@@ -23,7 +23,7 @@ export default class InformationView extends JetView {
 					localId:"position:combo",
 					label:"Position", labelPosition:"top",
 					placeholder:"Click to select",
-					options:[]
+					options:getPositions()
 				},
 				{
 					view:"text", name:"email",
@@ -43,32 +43,26 @@ export default class InformationView extends JetView {
 			]
 		};
 
-		const right_photo = {
-			gravity:3,
-			margin:10,
-			rows:[
-				{
-					view:"photo",
-					name:"photo",
-					css:"form_photo",
-					width:260,
-					height:260,
-					borderless:true
-				},
-				{
-					view:"multicombo", name:"tags",
-					localId:"tags:combo",
-					placeholder:"Click to add tags",
-					options:[]
-				}
-			]
+		const photo = {
+			view:"photo",
+			name:"photo",
+			css:"form_photo",
+			width:260,
+			height:260,
+			borderless:true
 		};
 
 		return {
 			view:"form",
+			margin:20,
 			cols:[
-				left_main, { gravity:1 }, right_photo
+				photo, controls
 			]
 		};
+	}
+	init(form){
+		this.on(this.app,"person:select",person => {
+			form.setValues(person);
+		});
 	}
 }

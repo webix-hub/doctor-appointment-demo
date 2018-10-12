@@ -9,4 +9,7 @@ export default class DatesView extends JetView{
 			}
 		};
 	}
+	init(calendar){
+		calendar.setValue(new Date(2019,0,1))
+	}
 }

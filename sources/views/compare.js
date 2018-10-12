@@ -5,7 +5,6 @@ export default class CompareView extends JetView {
 	config(){
 		return {
 			type:"clean",
-			gravity:2,
 			rows:[
 				{ template:"Total tasks by projects", type:"header", css:"webix_header chart_header" },
 				{
