@@ -1,28 +1,28 @@
 import {JetView} from "webix-jet";
-// import {getProjects} from "models/projects";
+import {getStatistics} from "models/statistics";
 
-export default class CompareView extends JetView {
+export default class StatisticsView extends JetView {
 	config(){
 		return {
 			type:"clean",
 			rows:[
-				{ template:"Total tasks by projects", type:"header", css:"webix_header chart_header" },
+				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
 				{
 					localId:"chart",
 					view:"chart",
 					type:"bar",
 					radius:0,
-					barWidth:16,
-					yAxis:{
-						template:obj => obj.project, lines:false, color:"#EDEFF0"
-					},
+					barWidth:20,
 					xAxis:{
+						template:"#system#", lines:false, color:"#EDEFF0"
+					},
+					yAxis:{
 						start:0, step:15, end:90, color:"#fff", lineColor:"#EDEFF0"
 					},
 					legend:{
 						values:[
-							{ text:new Date().getFullYear()-1,color:"#8664C6" },
-							{ text:new Date().getFullYear(),color:"#1CA1C1" }
+							{ text:"Inpatients",color:"#8664C6" },
+							{ text:"Outpatients",color:"#1CA1C1" }
 						],
 						valign:"bottom", align:"right", layout:"x",
 						margin:4, padding:10,
@@ -32,23 +32,26 @@ export default class CompareView extends JetView {
 					},
 					series:[
 						{
-							value:"#tasks17#",
+							value:"#inpatients#",
 							color:"#8664C6",
 							tooltip:{
-								template:"#tasks17#"
+								template:"#inpatients#"
 							}
 						},
 						{
-							value:"#tasks18#",
+							value:"#outpatients#",
 							color:"#1CA1C1",
 							tooltip:{
-								template:"#tasks18#"
+								template:"#outpatients#"
 							}
 						}
 					],
-					padding:{ left:100, top:5, bottom:44 }
+					padding:{ left:40, top:5, bottom:44 }
 				}
 			]
 		};
+	}
+	init(){
+		this.$$("chart").parse(getStatistics());
 	}
 }

@@ -3,7 +3,7 @@ import PersonsView from "views/persons";
 import DatesView from "views/dates";
 import RegistryView from "views/registry";
 import InformationView from "views/information";
-import CompareView from "views/compare";
+import StatisticsView from "views/statistics";
 
 export default class DashboardView extends JetView{
 	config(){
@@ -19,7 +19,7 @@ export default class DashboardView extends JetView{
 							type:"wide",
 							cols:[
 								InformationView,
-								CompareView
+								StatisticsView
 							]
 						}
 					]
