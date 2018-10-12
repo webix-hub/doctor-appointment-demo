@@ -25,7 +25,7 @@ export default class AllTActionsView extends JetView {
 				{
 					id:"date", header:"Date",
 					fillspace:2, minWidth:150,
-					sort:"date", format:dateFormat
+					sort:"date"
 				},
 				{
 					id:"", header:"Payment", fillspace:3, minWidth:240, sort:"text",

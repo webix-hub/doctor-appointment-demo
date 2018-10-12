@@ -33,7 +33,7 @@ export default class ToolView extends JetView {
 								},
 								{
 									view:"icon", icon:"mdi mdi-settings",
-									tooltip:_("Go to settings"),
+									tooltip:"Go to settings",
 									click:() => {}
 								}
 							]

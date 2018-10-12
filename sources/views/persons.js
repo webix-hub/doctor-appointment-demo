@@ -6,7 +6,7 @@ export default class PersonsView extends JetView {
 		return {
 			rows:[
 				{
-					view:"toolbar", css:theme,
+					view:"toolbar",
 					elements:[
 						{ view:"label", label:"Persons", localId:"label" },
 						{ width:4 },
