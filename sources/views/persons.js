@@ -54,7 +54,7 @@ export default class PersonsView extends JetView {
 						template:obj => `<image class="userphoto" src="data/photos/${obj.photo}.jpg" />
 							<div class="text">
 						  		<span class="username">${obj.fname} ${obj.lname}</span>
-						  		<span class="money">$${obj.money}</span>
+						  		<span class="patient">${obj.type}</span>
 							</div>`,
 						height:66
 					},
@@ -71,6 +71,6 @@ export default class PersonsView extends JetView {
 	init(){
 		const list = this.$$("list");
 		list.sync(persons);
-		persons.waitData.then(() => list.select(1));
+		persons.waitData.then(() => list.select(7));
 	}
 }

@@ -7,6 +7,7 @@ export default class RegistryView extends JetView {
 			view:"datatable",
 			select:true,
 			tooltip:true,
+			headerRowHeight:42,
 			columns:[
 				{ id:"id", header:"#", width:40, sort:"int", tooltip:"" },
 				{
@@ -50,6 +51,6 @@ export default class RegistryView extends JetView {
 	}
 	init(grid){
 		grid.sync(persons);
-		persons.waitData.then(() => grid.select(1));
+		persons.waitData.then(() => grid.select(7));
 	}
 }
