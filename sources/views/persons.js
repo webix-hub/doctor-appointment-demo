@@ -8,7 +8,7 @@ export default class PersonsView extends JetView {
 				{
 					view:"toolbar",
 					elements:[
-						{ view:"label", label:"Persons", localId:"label" },
+						{ view:"label", label:"Patients", localId:"label" },
 						{ width:4 },
 						{
 							view:"text", localId:"search", hidden:true,
