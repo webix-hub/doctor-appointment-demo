@@ -6,39 +6,50 @@ export default class RegistryView extends JetView {
 		return {
 			view:"datatable",
 			select:true,
+			tooltip:true,
 			columns:[
-				{ id:"id", header:"#", width:40, sort:"int" },
+				{ id:"id", header:"#", width:40, sort:"int", tooltip:"" },
 				{
-					id:"type", header:"In/Out", sort:"int",
+					id:"type", header:"", sort:"int",
+					tooltip:"#type#",
+					width:40,
 					template:data => {
-						let type = data.type ? "incoming" : "outcoming";
-						return `<span class='webix_icon mdi mdi-${type}'></span>`;
+						let type = data.type === "inpatient" ? "gold" : "grey";
+						return `<span class='webix_icon mdi mdi-star ${type}'></span>`;
 					}
 				},
 				{
-					id:"date", header:"Date",
-					sort:"date"
+					id:"date", header:"Date", tooltip:"",
+					fillspace:1,
+					sort:"date", format:webix.Date.dateToStr("%j %F")
 				},
 				{
 					id:"", header:"Name", sort:"text",
-					template:data => {
-						return data.fname + " " + data.lname;
-					}
+					fillspace:1, tooltip:"",
+					template:data => data.fname + " " + data.lname
 				},
-				{
-					id:"", header:"Gender",
-					sort:"text",
-					template: data => `<span class='webix_icon mdi mdi-${data.gender} ${data.gender}'></span>`
-				},
-				{ id:"email", header:"Email" },
-				{ id:"visit", header:"Visit" /*1st or not*/ },
-				{
-					id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:true
-				}
+				// {
+				// 	id:"gender", header:"Gender",
+				// 	sort:"text", tooltip:"#gender#",
+				// 	width:40,
+				// 	template: data => `<span class='webix_icon mdi mdi-gender-${data.gender}'></span>`
+				// },
+				{ id:"email", header:"Email", tooltip:"", fillspace:1 },
+				// {
+				// 	id:"visit", header:"Visit", width:40,
+				// 	tooltip:"#visit#",
+				// 	template:data => {
+				// 		const visit = (data.visit === "first time") ? "numeric-1-box" : "repeat";
+				// 		return `<span class='webix_icon mdi mdi-${visit}'></span>`;
+				// 	}
+				// },
+				{ id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:2, tooltip:"" },
+				{ id:"symptoms", header:"Symptoms", sort:"text", fillspace:3, tooltip:"" }
 			]
 		};
 	}
 	init(grid){
 		grid.sync(persons);
+		persons.waitData.then(() => grid.select(1));
 	}
 }

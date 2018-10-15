@@ -1,5 +1,5 @@
 import "./styles/app.css";
-import {JetApp, HashRouter, plugins } from "webix-jet";
+import {JetApp, HashRouter } from "webix-jet";
 
 export default class MyApp extends JetApp{
 	constructor(config){

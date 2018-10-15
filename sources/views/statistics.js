@@ -11,14 +11,9 @@ export default class StatisticsView extends JetView {
 					localId:"chart",
 					view:"chart",
 					type:"bar",
-					radius:0,
 					barWidth:20,
-					xAxis:{
-						template:"#system#", lines:false, color:"#EDEFF0"
-					},
-					yAxis:{
-						start:0, step:15, end:90, color:"#fff", lineColor:"#EDEFF0"
-					},
+					xAxis:{ template:"#system#", lines:false },
+					yAxis:{ start:0, step:15, end:90, color:"#fff" },
 					legend:{
 						values:[
 							{ text:"Inpatients",color:"#8664C6" },

@@ -3,13 +3,10 @@ export default class DatesView extends JetView{
 	config(){
 		return {
 			view:"calendar",
-			width:250,
-			on:{
-				onDateSelect:date => {}
-			}
+			width:250
 		};
 	}
 	init(calendar){
-		calendar.setValue(new Date(2019,0,1))
+		calendar.setValue(new Date(2019,0,1));
 	}
 }

@@ -58,3 +58,10 @@
 .webix_view.chart_header{
 	text-align: center;
 }
+/* grid */
+.webix_icon.mdi-star.gold{
+	color:gold;
+}
+.webix_icon.mdi-star.grey{
+	color:lightgrey;
+}
