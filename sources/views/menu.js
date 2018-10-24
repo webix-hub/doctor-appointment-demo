@@ -1,4 +1,4 @@
-import {JetView} from "webix-jet";
+import {JetView,plugins} from "webix-jet";
 
 export default class MenuView extends JetView {
 	config(){
@@ -7,19 +7,18 @@ export default class MenuView extends JetView {
 			width:200,
 			collapsed:true,
 			data:[
-				{ id:"dashboard", icon:"mdi mdi-doctor" },
-				{ id:"cube", icon:"mdi mdi-cube" },
-				{ id:"code", icon:"mdi mdi-code-not-equal-variant" },
-				{ id:"layout", icon:"mdi mdi-view-dashboard" },
-				{ id:"charts", icon:"mdi mdi-chart-areaspline" },
-				{ id:"typo", icon:"mdi mdi-format-line-style" },
-				{ id:"calendar", icon:"mdi mdi-calendar" },
-				{ id:"files", icon:"mdi mdi-folder-star" },
+				{ id:"dashboard", value:"Dashboard", icon:"mdi mdi-doctor" },
+				{ id:"widgets", value:"Widgets", icon:"mdi mdi-widgets" },
+				{ id:"demos", value:"Demos", icon:"mdi mdi-monitor-dashboard" },
+				{ id:"prices", value:"Prices", icon:"mdi mdi-currency-usd" },
+				{ id:"tutorials", value:"Tutorials", icon:"mdi mdi-school" }
 			]
 		};
 	}
 	init(sidebar){
+		this.use(plugins.Menu,sidebar);
 		sidebar.getPopup().attachEvent("onBeforeShow",() => false);
-		sidebar.select("dashboard");
+
+		this.on(this.app,"menu:toggle",() => sidebar.toggle());
 	}
 }

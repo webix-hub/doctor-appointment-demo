@@ -9,7 +9,10 @@ export default class ToolView extends JetView {
 				{
 					paddingY:7,
 					rows:[
-						{ view:"icon", icon:"mdi mdi-menu" }
+						{
+							view:"icon", icon:"mdi mdi-menu",
+							click:() => this.app.callEvent("menu:toggle")
+						}
 					]
 				},
 				{ css:"logo" },

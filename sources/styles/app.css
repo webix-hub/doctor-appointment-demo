@@ -65,3 +65,7 @@
 .webix_icon.mdi-star.grey{
 	color:lightgrey;
 }
+/* iframes */
+.webix_view.ifr_template > .webix_disabled{
+	opacity:1 !important;
+}
