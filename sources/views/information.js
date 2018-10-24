@@ -1,6 +1,5 @@
 import {JetView} from "webix-jet";
 import "webix/photo";
-import {getPositions} from "models/positions";
 
 export default class InformationView extends JetView {
 	config(){
@@ -19,11 +18,9 @@ export default class InformationView extends JetView {
 					placeholder:"Last name"
 				},
 				{
-					view:"richselect", name:"position",
-					localId:"position:combo",
-					label:"Position", labelPosition:"top",
-					placeholder:"Click to select",
-					options:getPositions()
+					view:"datepicker", name:"birthday",
+					label:"Birthday", labelPosition:"top",
+					placeholder:"Click to select"
 				},
 				{
 					view:"text", name:"email",
@@ -31,12 +28,11 @@ export default class InformationView extends JetView {
 					placeholder:"judetheawesome@obscure.com"
 				},
 				{
-					view:"radio", name:"notifications",
-					label:"Notifications", labelPosition:"top",
+					view:"radio", name:"type",
 					value:1,
 					options:[
-						{ id:1, value:"Yes" },
-						{ id:2, value:"No" }
+						{ id:1, value:"Inpatient" },
+						{ id:2, value:"Outpatient" }
 					]
 				},
 				{ height:20 }
@@ -52,17 +48,43 @@ export default class InformationView extends JetView {
 			borderless:true
 		};
 
+		const buttons = {
+			margin:10, cols:[
+				{
+					view:"button", value:"Reset",
+					click:() => this.getRoot().setValues(this._currData)
+				},
+				{ 
+					view:"button", value:"Save", type:"form",
+					click:() => {
+						if (this.getRoot().validate())
+							this.app.callEvent("save:patient:data",[this.getRoot().getValues()]);
+					}
+				}
+			]
+		};
+
 		return {
 			view:"form",
 			margin:20,
 			cols:[
-				photo, controls
-			]
+				photo,
+				{
+					rows:[
+						controls,
+						buttons
+					]
+				}
+			],
+			rules:{
+				"fname":webix.rules.isNotEmpty
+			}
 		};
 	}
 	init(form){
 		this.on(this.app,"person:select",person => {
 			form.setValues(person);
+			this._currData = person;
 		});
 	}
 }

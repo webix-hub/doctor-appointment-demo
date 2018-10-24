@@ -15,7 +15,7 @@ export default class DashboardView extends JetView{
 					rows:[
 						RegistryView,
 						{
-							height:440,
+							height:420,
 							type:"wide",
 							cols:[
 								InformationView,
