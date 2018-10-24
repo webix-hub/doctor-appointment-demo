@@ -22,7 +22,7 @@ export default class RegistryView extends JetView {
 							tooltip:"#type#",
 							width:40,
 							template:data => {
-								let type = data.type === "inpatient" ? "gold" : "grey";
+								let type = (data.type === 1) ? "gold" : "grey";
 								return `<span class='webix_icon mdi mdi-star ${type}'></span>`;
 							}
 						},
@@ -39,7 +39,10 @@ export default class RegistryView extends JetView {
 						{ id:"email", header:"Email", tooltip:"", fillspace:1 },
 						{ id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:2, tooltip:"" },
 						{ id:"symptoms", header:"Symptoms", sort:"text", fillspace:3, tooltip:"" }
-					]
+					],
+					on:{
+						onAfterSelect:record => this.app.callEvent("person:select",[record])
+					}
 				}
 			]
 		};
@@ -47,6 +50,12 @@ export default class RegistryView extends JetView {
 	init(){
 		const grid = this.$$("grid");
 		grid.sync(persons);
-		persons.waitData.then(() => grid.select(7));
+
+		this.on(this.app,"person:select",person => grid.select(person.id));
+
+		this.on(this.app,"date:select",date => {
+			if (date) grid.filter(obj => !(obj.date < date) && !(obj.date > date));
+			else grid.filter();
+		});
 	}
 }

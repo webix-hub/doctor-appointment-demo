@@ -54,7 +54,7 @@ export default class PersonsView extends JetView {
 						template:obj => `<image class="userphoto" src="data/photos/${obj.photo}.jpg" />
 							<div class="text">
 						  		<span class="username">${obj.fname} ${obj.lname}</span>
-						  		<span class="patient">${obj.type}</span>
+						  		<span class="patient">${(obj.type === 1) ? "Inpatient" : "Outpatient"}</span>
 							</div>`,
 						height:66
 					},
@@ -72,5 +72,11 @@ export default class PersonsView extends JetView {
 		const list = this.$$("list");
 		list.sync(persons);
 		persons.waitData.then(() => list.select(7));
+
+		this.on(this.app,"save:patient:data",data => {
+			persons.updateItem(data.id,data);
+		});
+
+		this.on(this.app,"person:select",record =>list.select(record.id));
 	}
 }
