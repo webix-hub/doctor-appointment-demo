@@ -11,6 +11,7 @@ export default class ToolView extends JetView {
 					rows:[
 						{
 							view:"icon", icon:"mdi mdi-menu",
+							tooltip:"Toggle menu",
 							click:() => this.app.callEvent("menu:toggle")
 						}
 					]

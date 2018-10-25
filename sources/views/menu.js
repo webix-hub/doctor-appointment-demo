@@ -6,6 +6,9 @@ export default class MenuView extends JetView {
 			view:"sidebar",
 			width:200,
 			collapsed:true,
+			tooltip:{
+				template:"#value#"
+			},
 			data:[
 				{ id:"dashboard", value:"Dashboard", icon:"mdi mdi-doctor" },
 				{ id:"widgets", value:"Widgets", icon:"mdi mdi-widgets" },
@@ -19,6 +22,12 @@ export default class MenuView extends JetView {
 		this.use(plugins.Menu,sidebar);
 		sidebar.getPopup().attachEvent("onBeforeShow",() => false);
 
-		this.on(this.app,"menu:toggle",() => sidebar.toggle());
+		this.on(this.app,"menu:toggle",() => {
+			sidebar.toggle();
+			if (sidebar.config.collapsed)
+				sidebar.config.tooltip.enable();
+			else
+				sidebar.config.tooltip.disable();
+		});
 	}
 }
