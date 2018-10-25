@@ -11,18 +11,28 @@ export default class DashboardView extends JetView{
 			type:"wide",
 			cols:[
 				{
-					type:"wide",
-					rows:[
-						RegistryView,
-						{
-							height:420,
-							type:"wide",
-							cols:[
-								InformationView,
-								StatisticsView
-							]
-						}
-					]
+					view:"scrollview",
+					body:{
+						type:"wide",
+						rows:[
+							RegistryView,
+							{
+								id:"form-and-chart",
+								type:"wide",
+								rows:[
+									{
+										height:420,
+										type:"wide",
+										responsive:"form-and-chart",
+										cols:[
+											InformationView,
+											StatisticsView
+										]
+									}
+								]
+							}
+						]
+					}
 				},
 				{
 					type:"wide",

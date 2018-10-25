@@ -4,6 +4,7 @@ import {persons} from "models/persons";
 export default class RegistryView extends JetView {
 	config(){
 		return {
+			minHeight:360,
 			rows:[
 				{
 					view:"toolbar", elements:[

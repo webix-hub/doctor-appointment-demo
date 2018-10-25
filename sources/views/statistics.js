@@ -5,6 +5,7 @@ export default class StatisticsView extends JetView {
 	config(){
 		return {
 			type:"clean",
+			minWidth:471,
 			rows:[
 				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
 				{

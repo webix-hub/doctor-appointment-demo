@@ -4,8 +4,8 @@ import "webix/photo";
 export default class InformationView extends JetView {
 	config(){
 		const controls = {
-			minWidth:200,
 			margin:10,
+			minWidth:226,
 			rows:[
 				{
 					view:"text", name:"fname",
@@ -43,13 +43,12 @@ export default class InformationView extends JetView {
 			view:"photo",
 			name:"photo",
 			css:"form_photo",
-			width:260,
-			height:260,
 			borderless:true
 		};
 
 		const buttons = {
-			margin:10, cols:[
+			margin:10,
+			cols:[
 				{
 					view:"button", value:"Reset",
 					click:() => this.getRoot().setValues(this._currData)
