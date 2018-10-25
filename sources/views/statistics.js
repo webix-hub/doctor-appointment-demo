@@ -6,6 +6,7 @@ export default class StatisticsView extends JetView {
 		return {
 			type:"clean",
 			minWidth:471,
+			gravity:3,
 			rows:[
 				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
 				{

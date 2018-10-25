@@ -66,6 +66,7 @@ export default class InformationView extends JetView {
 		return {
 			view:"form",
 			margin:20,
+			gravity:2,
 			cols:[
 				photo,
 				{

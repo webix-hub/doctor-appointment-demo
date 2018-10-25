@@ -12,6 +12,7 @@ export default class DashboardView extends JetView{
 			cols:[
 				{
 					view:"scrollview",
+					borderless:true,
 					body:{
 						type:"wide",
 						rows:[

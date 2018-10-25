@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import {persons} from "models/persons";
+import "webix/nstateicon";
 
 export default class PersonsView extends JetView {
 	config(){
@@ -7,11 +8,24 @@ export default class PersonsView extends JetView {
 			rows:[
 				{
 					view:"toolbar",
+					localId:"toolbar",
+					visibleBatch:"default",
 					elements:[
-						{ view:"label", label:"Patients", localId:"label" },
+						{ view:"label", label:"Patients", batch:"default" },
 						{ width:4 },
 						{
-							view:"text", localId:"search", hidden:true,
+							view:"nstateicon", batch:"default",
+							states:["inpatients","outpatients","all patients"],
+							icons:["mdi mdi-all-inclusive","mdi mdi-hospital","mdi mdi-home"],
+							tooltip:true, tip:"Click to show",
+							on:{
+								onStateChange:state => {
+									this.$$("list").filter("type",state);
+								}
+							}
+						},
+						{
+							view:"text", batch:"search", localId:"search",
 							on:{
 								onTimedKeyPress(){
 									const input = this.getValue().toLowerCase();
@@ -23,19 +37,14 @@ export default class PersonsView extends JetView {
 							}
 						},
 						{
-							view:"icon", icon:"mdi mdi-magnify",
-							state:"closed", localId:"search_icon",
-							click:function(){
-								if (this.config.state === "closed"){
-									this.$scope.$$("label").hide();
-									this.$scope.$$("search").show();
-									this.$scope.$$("search").focus();
-									this.config.state = "open";
-								}
-								else if (this.config.state === "open"){
-									this.$scope.$$("label").show();
-									this.$scope.$$("search").hide();
-									this.config.state = "closed";
+							view:"nstateicon",
+							icons:["mdi mdi-magnify","mdi mdi-close"],
+							states:["default","search"],
+							on:{
+								onStateChange:function(state){
+									const batch = this.config.states[state];
+									this.$scope.$$("toolbar").showBatch(batch);
+									if (batch === "search") this.$scope.$$("search").focus();
 								}
 							}
 						}

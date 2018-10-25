@@ -15,9 +15,8 @@ export default class RegistryView extends JetView {
 					view:"datatable",
 					localId:"grid",
 					select:true,
-					tooltip:true,
 					columns:[
-						{ id:"id", header:"#", width:40, sort:"int", tooltip:"" },
+						{ id:"id", header:"#", width:30, sort:"int" },
 						{
 							id:"type", header:"", sort:"int",
 							tooltip:"#type#",
@@ -28,18 +27,18 @@ export default class RegistryView extends JetView {
 							}
 						},
 						{
-							id:"date", header:"Date", tooltip:"",
+							id:"date", header:"Date",
 							fillspace:1,
 							sort:"date", format:webix.Date.dateToStr("%j %F")
 						},
 						{
 							id:"", header:"Name", sort:"text",
-							fillspace:1, tooltip:"",
+							fillspace:2,
 							template:data => data.fname + " " + data.lname
 						},
-						{ id:"email", header:"Email", tooltip:"", fillspace:1 },
-						{ id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:2, tooltip:"" },
-						{ id:"symptoms", header:"Symptoms", sort:"text", fillspace:3, tooltip:"" }
+						{ id:"email", header:"Email", sort:"text", fillspace:2 },
+						{ id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:2 },
+						{ id:"symptoms", header:"Symptoms", sort:"text", fillspace:3 }
 					],
 					on:{
 						onAfterSelect:record => this.app.callEvent("person:select",[record])
