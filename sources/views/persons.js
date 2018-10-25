@@ -47,9 +47,6 @@ export default class PersonsView extends JetView {
 					css:"persons_list",
 					width:250,
 					select:true,
-					tooltip:{
-						template:"Click twice to see more goodies"
-					},
 					type:{
 						template:obj => `<image class="userphoto" src="data/photos/${obj.photo}.jpg" />
 							<div class="text">
