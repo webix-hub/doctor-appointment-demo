@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import ProfileMenuView from "views/profilemenu";
 
 export default class ToolView extends JetView {
 	config(){
@@ -25,17 +26,18 @@ export default class ToolView extends JetView {
 							margin:8,
 							cols:[
 								{
-									view:"icon", icon:"mdi mdi-bell",
-									localId:"bell", badge:3,
-									tooltip:"Open latest notifications",
+									view:"icon", icon:"mdi mdi-settings",
+									tooltip:"Open theme settings",
 									click:function(){
 										
 									}
 								},
 								{
-									view:"icon", icon:"mdi mdi-settings",
-									tooltip:"Go to settings",
-									click:() => {}
+									view:"icon", icon:"mdi mdi-account",
+									tooltip:"Open profile options",
+									click:function(){
+										this.$scope.profileMenu.showMenu(this.$view);
+									}
 								}
 							]
 						}
@@ -44,5 +46,8 @@ export default class ToolView extends JetView {
 				{ width:6 }
 			]
 		};
+	}
+	init(){
+		this.profileMenu = this.ui(ProfileMenuView);
 	}
 }
