@@ -77,6 +77,6 @@ export default class LoginView extends JetView{
 		};
 	}
 	init(){
-		this.$$("name").focus();
+		webix.delay(() => this.$$("name").focus());
 	}
 }

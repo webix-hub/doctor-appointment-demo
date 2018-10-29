@@ -1,4 +1,4 @@
-import {JetView} from "webix-jet";
+import {JetView,plugins} from "webix-jet";
 
 export default class ProfileMenuView extends JetView {
 	config(){
@@ -6,6 +6,7 @@ export default class ProfileMenuView extends JetView {
 			view:"popup",
 			body:{
 				view:"list",
+				localId:"menu",
 				autoheight:true,
 				width:150,
 				select:true,
@@ -18,11 +19,24 @@ export default class ProfileMenuView extends JetView {
 				],
 				on:{
 					onAfterSelect:id => {
-						if (id === "logout") this.show("/login");
+						if (id !== "logout")
+							webix.delay(() => {
+								this.getRoot().hide();
+								this.$$("menu").unselect();
+							});
 					}
 				}
 			}
 		};
+	}
+	init(){
+		this.use(plugins.Menu,{
+			id:"menu",
+			urls:{
+				"profile":"profile/about",
+				"logout":"/login"
+			}
+		})
 	}
 	showMenu(pos){
 		this.getRoot().show(pos);

@@ -30,4 +30,8 @@ export default class MenuView extends JetView {
 				sidebar.config.tooltip.disable();
 		});
 	}
+	urlChange(){
+		if (this.getUrl()[2])
+			this.getRoot().unselect();
+	}
 }
