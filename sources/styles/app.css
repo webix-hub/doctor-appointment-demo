@@ -90,11 +90,23 @@
 	display:block;
 }
 .webix_el_label.doc_main .doc_name{
-	font-size: 16px;
+	font-size:16px;
 }
 .webix_el_label.doc_main{
 	text-align:center;
 }
 .webix_view.profile_photo > div{
 	padding:0px 0px 0px 0px;
+}
+.webix_dataview_inner_item .criterion{
+	display:block;
+	font-weight:500;
+}
+.webix_dataview_inner_item .stars .star{
+	margin-left:-4px;
+	font-size:18px;
+}
+
+.reviews .webix_dataview_item.tiles .webix_dataview_inner_item{
+	padding:12px;
 }
