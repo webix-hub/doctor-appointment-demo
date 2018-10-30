@@ -6,7 +6,7 @@
 .logo{
 	background:url(webix-logo.svg) 2px 2px no-repeat;
 }
-/* list of persons */
+/* list of patients */
 .userphoto{
 	display:inline-block;
 	border-radius:25px;
@@ -83,4 +83,18 @@
 /* profile menu */
 .webix_list.profile_menu .webix_list_item{
 	border:none;
+}
+/* profile */
+.webix_el_label.doc_main .doc_name,
+.webix_el_label.doc_main .doc_field{
+	display:block;
+}
+.webix_el_label.doc_main .doc_name{
+	font-size: 16px;
+}
+.webix_el_label.doc_main{
+	text-align:center;
+}
+.webix_view.profile_photo > div{
+	padding:0px 0px 0px 0px;
 }

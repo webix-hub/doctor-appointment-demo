@@ -4,6 +4,10 @@ webix.protoUI({
 		width:260,
 		height:260
 	},
+	$init(config){
+		if (config.value)
+			webix.delay(() => this.setValue(config.value));
+	},
 	getValue(){
 		return this.config.value;
 	},
