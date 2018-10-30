@@ -5,6 +5,7 @@ import "webix/nstateicon";
 export default class ReviewsView extends JetView {
 	config(){
 		return {
+			minHeight:300,
 			rows:[
 				{
 					view:"toolbar", elements:[

@@ -4,7 +4,7 @@ import "webix/photo";
 export default class MainInfoView extends JetView {
 	config(){
 		return {
-			type:"form",
+			type:"form", height:322,
 			rows:[
 				{
 					cols:[

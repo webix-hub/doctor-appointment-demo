@@ -4,6 +4,7 @@ import {getFriends} from "models/friends";
 export default class FriendsView extends JetView {
 	config(){
 		return {
+			minHeight:280,
 			rows:[
 				{
 					view:"toolbar", elements:[

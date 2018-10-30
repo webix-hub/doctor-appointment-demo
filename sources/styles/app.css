@@ -121,3 +121,23 @@
 .status.offline{
 	color:#FF9800;
 }
+.profile_templates .webix_template{
+	padding:0px;
+}
+.webix_view.profile_templates{
+	margin-top:0px !important;
+}
+.schedule{
+	float:left;
+	margin-right:20px;
+}
+.days{
+	margin-bottom:6px;
+}
+.skill, .qualification_step{
+	margin-bottom:4px;
+}
+.year{
+	float:right;
+	font-weight:500;
+}
