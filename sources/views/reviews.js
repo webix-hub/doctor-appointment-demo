@@ -1,11 +1,30 @@
 import {JetView} from "webix-jet";
 import {getReviews} from "models/reviews";
+import "webix/nstateicon";
 
 export default class ReviewsView extends JetView {
 	config(){
 		return {
 			rows:[
-				{ template:"Reviews", type:"header"},
+				{
+					view:"toolbar", elements:[
+						{ view:"label", template:"Reviews" },
+						{},
+						{
+							view:"nstateicon", tooltip:"Sort by stars",
+							icons:[
+								"mdi mdi-sort-ascending",
+								"mdi mdi-sort-descending"
+							],
+							states:[
+								"asc", "desc"
+							],
+							on:{
+								onStateChange: state => this.$$("reviews").sort("stars",state)
+							}
+						}
+					]
+				},
 				{
 					view:"dataview", xCount:1, select:true,
 					css:"reviews", localId:"reviews",

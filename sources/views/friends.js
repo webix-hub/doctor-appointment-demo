@@ -5,7 +5,42 @@ export default class FriendsView extends JetView {
 	config(){
 		return {
 			rows:[
-				{ template:"Friends", type:"header", localId:"header" },
+				{
+					view:"toolbar", elements:[
+						{ view:"label", template:"Friends", localId:"header" },
+						{},
+						{
+							view:"nstateicon", tooltip:true, tip:"Show",
+							icons:[
+								"mdi mdi-toggle-switch-off-outline",
+								"mdi mdi-toggle-switch"
+							],
+							states:[
+								"online", "all"
+							],
+							on:{
+								onStateChange:function(state){
+									const list = this.$scope.$$("list");
+									list.filter("status",this.config.states[--state]);
+									this.$scope.$$("header").setHTML(`Friends (${list.count()})`);
+								}
+							}
+						},
+						{
+							view:"nstateicon", tooltip:"Sort bt A-Z",
+							icons:[
+								"mdi mdi-sort-descending",
+								"mdi mdi-sort-ascending"
+							],
+							states:[
+								"asc", "desc"
+							],
+							on:{
+								onStateChange: state => this.$$("list").sort("name",state)
+							}
+						}
+					]
+				},
 				{
 					view:"list", css:"persons_list", select:true,
 					localId:"list",
@@ -26,7 +61,8 @@ export default class FriendsView extends JetView {
 		};
 	}
 	init(){
-		this.$$("list").parse(getFriends());
-		this.$$("header").setHTML(`Friends (${this.$$("list").count()})`);
+		const list = this.$$("list");
+		list.parse(getFriends());
+		this.$$("header").setHTML(`Friends (${list.count()})`);
 	}
 }

@@ -115,7 +115,7 @@
 	left:-30px;
 	font-size:12px !important;
 }
-.status.online{
+.status.online, .webix_icon.mdi.mdi-toggle-switch{
 	color:#8BC34A;
 }
 .status.offline{

@@ -3,9 +3,12 @@ export function getReviews(){
 }
 
 const reviews = [
-	{ id:1, value:"Punctuality", stars:5 },
-	{ id:2, value:"Manners", stars:4 },
-	{ id:3, value:"Knowledge", stars:5 },
-	{ id:4, value:"Cost", stars:4 },
-	{ id:5, value:"Colleagues", stars:4 }
+	{ value:"Knowledge", stars:5 },
+	{ value:"Professionalism", stars:5 },
+	{ value:"Confidence", stars:5 },
+	{ value:"Compassion", stars:3 },
+	{ value:"Manners", stars:3 },
+	{ value:"Punctuality", stars:4 },
+	{ value:"Cost", stars:4 },
+	{ value:"Colleagues", stars:3 }
 ];
