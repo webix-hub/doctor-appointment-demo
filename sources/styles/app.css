@@ -95,7 +95,8 @@
 .webix_el_label.doc_main{
 	text-align:center;
 }
-.webix_view.profile_photo > div{
+.webix_view.profile_photo > div,
+.webix_view.friend_photo > div{
 	padding:0px 0px 0px 0px;
 }
 .webix_dataview_inner_item .criterion{
@@ -122,7 +123,7 @@
 	color:#FF9800;
 }
 .profile_templates .webix_template{
-	padding:0px;
+	padding:0px 0px 0px 10px;
 }
 .webix_view.profile_templates{
 	margin-top:0px !important;
@@ -140,4 +141,24 @@
 .year{
 	float:right;
 	font-weight:500;
+}
+.friend_photo{
+	display:inline-block;
+	border-radius:50px;
+	float:left;
+}
+.webix_template .event_details{
+	font-weight:500;
+	color:#1ca1c1;
+	cursor:pointer;
+}
+.activity_text{
+	position: relative;
+	top:12px;
+}
+.webix_el_label.about_label{
+	padding-left:8px;
+}
+.webix_icon.mdi.mdi-pencil{
+	color:#1ca1c1;
 }

@@ -1,18 +1,41 @@
 import {JetView} from "webix-jet";
-import "webix/photo";
+import {getFriendsActivity} from "models/friendsactivity";
 
 export default class FriendsActivityView extends JetView{
 	config(){
 		return {
-			minHeight:300, rows:[
+			rows:[
 				{ template:"Friends activity", type:"header" },
 				{
-					view:"datalayout", cols:[
-						{ view:"photo" },
-						{ template:"some data component" }
+					view:"datalayout",
+					localId:"friends",
+					margin:30, padding:30,
+					type:"",
+					rows:[
+						{
+							margin:20, cols:[
+								{
+									name:"$value",
+									template:'<img style="height:60px;width:60px;" src="data/photos/#friend#_1.jpg" />',
+									css:"friend_photo", width:60, height:60
+								},
+								{
+									name:"data", borderless:true,
+									template:obj => {
+										const people = (obj.objects) ? obj.objects.join(", ") : "";
+										const details = obj.object || people || "";
+										const icon = obj.icon ? `<span class="webix_icon ${obj.icon}"></span>` : "";
+										return `<span class="activity_text"><span class="event_details">${obj.name}</span> ${obj.event} <span class="event_details">${details}</span> ${icon}</span>`;
+									}
+								}
+							]
+						}
 					]
 				}
 			]
 		};
+	}
+	init(){
+		this.$$("friends").parse(getFriendsActivity());
 	}
 }

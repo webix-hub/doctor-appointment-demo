@@ -8,16 +8,25 @@ export default class AboutView extends JetView {
 		const qualification = "<div class=\"qualification_step\">General Practitioner<span class=\"year\">May 2013 - Present</span></div><div class=\"qualification_step\">Attending Doctor<span class=\"year\">April 2009 - May 2013</span></div><div class=\"qualification_step\">Resident Doctor<span class=\"year\">June 2006 - April 2009</span></div><div class=\"qualification_step\">Internship at Princeton - Plainsboro Teaching Hospital, New Jersey, USA <span class=\"year\">2005-2006</span></div><div class=\"qualification_step\">University of Zurich, Doctor of Medicine <span class=\"year\">2005</span></div>";
 
 		return {
-			type:"form", minWidth:560,
+			type:"form", minWidth:560, padding:10,
 			rows:[
-				{ view:"label", template:"About" },
+				this.toolbar("About",56),
 				{ template:text, borderless:true, css:"profile_templates", autoheight:true },
-				{ view:"label", template:"Working time" },
+				this.toolbar("Working time",110),
 				{ template:time, borderless:true, css:"profile_templates", height:36 },
-				{ view:"label", template:"Skills" },
+				this.toolbar("Skills",56),
 				{ template:skills, borderless:true, css:"profile_templates", autoheight:true },
-				{ view:"label", template:"Qualification" },
+				this.toolbar("Qualification",110),
 				{ template:qualification, borderless:true, css:"profile_templates", autoheight:true }
+			]
+		};
+	}
+	toolbar(label,labelWidth){
+		return {
+			view:"toolbar", borderless:true, elements:[
+				{ view:"label", template:label, width:labelWidth, css:"about_label" },
+				{ view:"icon", icon:"mdi mdi-pencil" },
+				{}
 			]
 		};
 	}
