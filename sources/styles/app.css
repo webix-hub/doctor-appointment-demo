@@ -70,9 +70,9 @@
 	opacity:1 !important;
 }
 /* login form */
-.link .webix_template a{
+.link .webix_template{
 	color:rgb(28, 161, 193);
-	text-decoration:none;
+	cursor:pointer;
 }
 .link .webix_template a:hover{
 	color:rgb(28, 193, 193);

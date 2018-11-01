@@ -29,11 +29,18 @@ export default class LoginView extends JetView{
 							margin:20, width:140,
 							rows:[
 								{
-									view:"button", type:"form", value:"Log in"
+									view:"button", type:"form", value:"Log in",
+									click:() => {
+										if (this.$$("form").validate()){
+											const up = this.$$("form").getValues();
+											if (up.user === this._loginData.user && up.password === this._loginData.password)
+												this.show("/top/dashboard");
+										}
+									}
 								},
 								{
-									template:"<a href=\"#\">Forgot password?</a>",
-									autoheight:true, borderless:true, css:"link"
+									template:"Forgot password?", localId:"tip",
+									autoheight:true, borderless:true, css:"link",
 								}
 							]
 						},
@@ -51,23 +58,28 @@ export default class LoginView extends JetView{
 					cols:[
 						{},
 						{
-							view:"form",
+							view:"form", localId:"form",
 							margin:20, padding:30,
 							height:440, width:360,
 							elements:[
 								logo,
 								{
-									view:"text", name:"name", localId:"name",
+									view:"text", name:"user", localId:"name",
 									label:"<span class=\"webix_icon mdi mdi-account\">",
-									labelWidth:30, placeholder:"Username"
+									labelWidth:30, placeholder:"Username",
+									value:"awoolfe"
 								},
 								{
 									view:"text", type:"password", name:"password",
 									label:"<span class=\"webix_icon mdi mdi-lock\">",
-									labelWidth:30, placeholder:"Password"
+									labelWidth:30, placeholder:"Password",
+									value:"sta7wi10hm8ar4en8tte"
 								},
 								buttons
-							]
+							],
+							rules:{
+								$all:webix.rules.isNotEmpty
+							}
 						},
 						{}
 					]
@@ -78,5 +90,21 @@ export default class LoginView extends JetView{
 	}
 	init(){
 		webix.delay(() => this.$$("name").focus());
+		// very dummy login and password
+		this._loginData = {
+			user:"awoolfe",
+			password:"sta7wi10hm8ar4en8tte"
+		}
+		this.loginTip = webix.ui({
+			view:"tooltip",
+			template:"Don't worry.<br>Login is #user#<br>Password is #password#"
+		});
+
+		this.tipEvent = webix.event(this.$$("tip").$view,"click",(e) => {
+			this.loginTip.show(this._loginData,webix.html.pos(e));
+		});
+	}
+	destroy(){
+		webix.eventRemove(this.tipEvent);
 	}
 }
