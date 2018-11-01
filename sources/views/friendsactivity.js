@@ -16,7 +16,11 @@ export default class FriendsActivityView extends JetView{
 							margin:20, cols:[
 								{
 									name:"$value",
-									template:'<img style="height:60px;width:60px;" src="data/photos/#friend#_1.jpg" />',
+									template:obj => {
+										if (obj.friend)
+											return `<img style="height:60px;width:60px;" src="data/photos/${obj.friend}_1.jpg" />`;
+										return "";
+									},
 									css:"friend_photo", width:60, height:60
 								},
 								{

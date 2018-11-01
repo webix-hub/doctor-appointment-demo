@@ -158,7 +158,15 @@
 }
 .webix_el_label.about_label{
 	padding-left:8px;
+	font-size:16px;
+	color:#475466;
 }
 .webix_icon.mdi.mdi-pencil{
 	color:#1ca1c1;
+}
+.webix_template .qualification{
+	padding-top:12px;
+}
+.webix_template .schedule{
+	padding-top:12px;
 }

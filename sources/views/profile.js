@@ -7,7 +7,7 @@ import FriendsActivityView from "views/friendsactivity";
 export default class ProfileView extends JetView {
 	config(){
 		return {
-			view:"scrollview",
+			view:"scrollview", borderless:true,
 			body:{
 				type:"wide",
 				cols:[

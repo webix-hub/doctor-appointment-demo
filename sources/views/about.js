@@ -1,33 +1,151 @@
 import {JetView} from "webix-jet";
+import {getProfileData} from "models/profile";
 
 export default class AboutView extends JetView {
 	config(){
-		const text = "Dr. Arienette Woolfe is a general practitioner in Grindelwald. She received her medical degree from the University of Zurich and has been in practice for 11 years. She is one of 5 doctors at Spital Interlaken who specialize in General Practice. Dr. Woolfe is dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. She has a strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. She is willing to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Dr. Woolfe has a wide knowledge of a range of health issues that impact internal organs.";
-		const time = "<div class=\"schedule\"><div class=\"days\">Monday, Wednesday, Friday</div><div class=\"time\">11:00 AM - 15:00 PM</div></div><div class=\"schedule\"><div class=\"days\">Tuesday, Thursday</div><div class=\"time\">14:00 AM - 18:00 PM</div></div>";
-		const skills = "<div class=\"skill\">- patient consultations at home and within the surgery</div><div class=\"skill\">- physical examinations</div><div class=\"skill\">- diagnosis and treatment of illnesses/ailments</div><div class=\"skill\">- minor surgery</div><div class=\"skill\">- health education</div>";
-		const qualification = "<div class=\"qualification_step\">General Practitioner<span class=\"year\">May 2013 - Present</span></div><div class=\"qualification_step\">Attending Doctor<span class=\"year\">April 2009 - May 2013</span></div><div class=\"qualification_step\">Resident Doctor<span class=\"year\">June 2006 - April 2009</span></div><div class=\"qualification_step\">Internship at Princeton - Plainsboro Teaching Hospital, New Jersey, USA <span class=\"year\">2005-2006</span></div><div class=\"qualification_step\">University of Zurich, Doctor of Medicine <span class=\"year\">2005</span></div>";
-
 		return {
-			type:"form", minWidth:560, padding:10,
+			view:"form", minWidth:560, padding:10,
 			rows:[
 				this.toolbar("About",56),
-				{ template:text, borderless:true, css:"profile_templates", autoheight:true },
-				this.toolbar("Working time",110),
-				{ template:time, borderless:true, css:"profile_templates", height:36 },
+				{
+					cols:[
+						{
+							view:"template", localId:"about", borderless:true,
+							css:"profile_templates", autoheight:true,
+							template:"#about#"
+						},
+						{
+							localId:"edit:about", hidden:true,
+							rows:[
+								{
+									view:"textarea", 
+									name:"about", height:140
+								},
+								this.editButtons("about")
+							]
+						}
+					]
+				},
+				{ view:"label", template:"Working time", css:"about_label" },
+				{
+					view:"template", localId:"schedule", borderless:true,
+					css:"profile_templates", minHeight:52,
+					template:obj => {
+						let result = "";
+						if (obj.schedule)
+							for (let i = 0; i < obj.schedule.length; i++)
+								result += `<div class="schedule">
+									<div class="days">${obj.schedule[i].day}</div>
+									<div class="time">${obj.schedule[i].time}</div>
+								</div>`;
+						return result;
+					}
+				},
 				this.toolbar("Skills",56),
-				{ template:skills, borderless:true, css:"profile_templates", autoheight:true },
-				this.toolbar("Qualification",110),
-				{ template:qualification, borderless:true, css:"profile_templates", autoheight:true }
+				{
+					cols:[
+						{
+							view:"template", localId:"skills", borderless:true,
+							css:"profile_templates", autoheight:true,
+							template:obj => {
+								let result = "";
+								if (obj.skills)
+									for (let i = 0; i < obj.skills.length; i++)
+										result += `<div class="skill">
+											<span class="webix_icon mdi mdi-circle-small"></span>
+											${obj.skills[i]}
+										</div>`;
+								return result;
+							}
+						},
+						{
+							localId:"edit:skills", hidden:true,
+							rows:[
+								this.editButtons("skills"),
+								{
+									view:"multitext", separator:",",
+									name:"skills"
+								}
+							]
+						}
+					]
+				},
+				{ view:"label", template:"Qualification", css:"about_label" },
+				{
+					view:"template", localId:"qualification", borderless:true,
+					css:"profile_templates", autoheight:true,
+					template:obj => {
+						let result = `<div class="qualification">`;
+						if (obj.qualification)
+							for (let i = 0; i < obj.qualification.length; i++)
+								result += `<div class="qualification_step">
+									${obj.qualification[i].step}
+									<span class="year">${obj.qualification[i].time}</span>
+								</div>`;
+						return result + `</div>`;
+					}
+				}
 			]
 		};
+	}
+	init(){
+		this._data = getProfileData();
+		const templates = this.getRoot().queryView({ view:"template" },"all");
+		
+		templates.map(view => {
+			view.setValues(this._data);
+		});
+
+		this.getRoot().setValues(this._data);
 	}
 	toolbar(label,labelWidth){
 		return {
 			view:"toolbar", borderless:true, elements:[
 				{ view:"label", template:label, width:labelWidth, css:"about_label" },
-				{ view:"icon", icon:"mdi mdi-pencil" },
+				{
+					view:"icon", icon:"mdi mdi-pencil",
+					localId:"icon:" + label.toLowerCase(),
+					click:function(){
+						this.$scope.$$("edit:" + label.toLowerCase()).show();
+						this.$scope.$$(label.toLowerCase()).hide();
+						this.hide();
+					}
+				},
 				{}
 			]
 		};
+	}
+	editButtons(label){
+		return {
+			margin:5, cols:[
+				{},
+				{
+					view:"button", value:"Cancel", width:100,
+					click:() => {
+						this.getRoot().elements[label].setValue(this._data[label]);
+						this.editEnd(label);
+					}
+				},
+				{
+					view:"button", value:"Save", type:"form", width:100,
+					click:() => {
+						const newData = {};
+						const formData = this.getRoot().getValues();
+						if (label === "about")
+							newData[label] = formData[label];
+						else if (label === "skills")
+							newData[label] = formData[label].split(",");
+						this.$$(label).setValues(newData);
+						this._data = formData;
+						this.editEnd(label);
+					}
+				}
+			]
+		};
+	}
+	editEnd(label){
+		this.$$("edit:" + label).hide();
+		this.$$("icon:" + label).show();
+		this.$$(label).show();
 	}
 }
