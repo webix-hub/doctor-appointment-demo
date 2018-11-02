@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
-import "webix/multiadd";
+import "webix/multidate";
+import "webix/multitime";
 import {getProfileData} from "models/profile";
 
 export default class AboutView extends JetView {
@@ -7,7 +8,7 @@ export default class AboutView extends JetView {
 		const dateFormat = webix.Date.dateToStr("%F %Y");
 
 		return {
-			view:"form", minWidth:560, padding:10,
+			view:"form", minWidth:680, padding:10,
 			rows:[
 				this.toolbar("About",56),
 				{
@@ -29,20 +30,38 @@ export default class AboutView extends JetView {
 						}
 					]
 				},
-				{ view:"label", template:"Working time", css:"about_label" },
+				this.toolbar("Schedule",110),
 				{
-					view:"template", localId:"schedule", borderless:true,
-					css:"profile_templates", minHeight:52,
-					template:obj => {
-						let result = "";
-						if (obj.schedule)
-							for (let i = 0; i < obj.schedule.length; i++)
-								result += `<div class="schedule">
-									<div class="days">${obj.schedule[i].day}</div>
-									<div class="time">${obj.schedule[i].time}</div>
-								</div>`;
-						return result;
-					}
+					cols:[
+						{
+							view:"template", localId:"schedule", borderless:true,
+							css:"profile_templates", minHeight:52,
+							template:obj => {
+								let result = "";
+								if (obj.schedule)
+									for (let key in obj.schedule){
+										if (key.indexOf("day") !== -1)
+											result += `<div class="schedule"><div class="days">${obj.schedule[key]}</div>`;
+										else if (key.indexOf("time") !== -1)
+											result += `<div class="time">${obj.schedule[key]}</div></div>`;
+									}
+								return result;
+							}
+						},
+						{
+							localId:"edit:schedule", hidden:true,
+							rows:[
+								{
+									rows:[
+										{
+											view:"multitime", name:"schedule"
+										}
+									]
+								},
+								this.editButtons("schedule")
+							]
+						}
+					]
 				},
 				this.toolbar("Skills",56),
 				{
@@ -108,7 +127,7 @@ export default class AboutView extends JetView {
 								{
 									rows:[
 										{
-											view:"multiadd", name:"qualification"
+											view:"multidate", name:"qualification"
 										}
 									]
 								},
@@ -164,10 +183,11 @@ export default class AboutView extends JetView {
 						const newData = {};
 						const formData = this.getRoot().getValues();
 
-						if (label === "about" || label === "qualification")
-							newData[label] = formData[label];
-						else if (label === "skills")
+						if (label === "skills")
 							newData[label] = formData[label].split(",");
+						else
+							newData[label] = formData[label];
+						
 
 						this.$$(label).setValues(newData);
 						this._data = formData;

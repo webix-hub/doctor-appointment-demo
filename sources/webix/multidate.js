@@ -1,5 +1,5 @@
 webix.protoUI({
-	name:"multiadd",
+	name:"multidate",
 	defaults:{
 	  	borderless:true,
 		rows:[
