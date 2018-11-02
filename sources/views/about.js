@@ -1,8 +1,11 @@
 import {JetView} from "webix-jet";
+import "webix/multiadd";
 import {getProfileData} from "models/profile";
 
 export default class AboutView extends JetView {
 	config(){
+		const dateFormat = webix.Date.dateToStr("%F %Y");
+
 		return {
 			view:"form", minWidth:560, padding:10,
 			rows:[
@@ -61,29 +64,58 @@ export default class AboutView extends JetView {
 						{
 							localId:"edit:skills", hidden:true,
 							rows:[
-								this.editButtons("skills"),
 								{
-									view:"multitext", separator:",",
-									name:"skills"
-								}
+									rows:[
+										{
+											view:"multitext", separator:",",
+											name:"skills"
+										}
+									]
+								},
+								this.editButtons("skills")
 							]
 						}
 					]
 				},
-				{ view:"label", template:"Qualification", css:"about_label" },
+				this.toolbar("Qualification",110),
 				{
-					view:"template", localId:"qualification", borderless:true,
-					css:"profile_templates", autoheight:true,
-					template:obj => {
-						let result = `<div class="qualification">`;
-						if (obj.qualification)
-							for (let i = 0; i < obj.qualification.length; i++)
-								result += `<div class="qualification_step">
-									${obj.qualification[i].step}
-									<span class="year">${obj.qualification[i].time}</span>
-								</div>`;
-						return result + `</div>`;
-					}
+					cols:[
+						{
+							view:"template", localId:"qualification", borderless:true,
+							css:"profile_templates", autoheight:true,
+							template:obj => {
+								if (obj.qualification){
+									let result = `<div class="qualification">`;
+									for (let key in obj.qualification){
+
+										if (key.indexOf("step") !== -1)	
+											result += `<div class="qualification_step"> ${obj.qualification[key]}`;
+										else if (key.indexOf("time") !== -1){
+											const startDate = dateFormat(obj.qualification[key].start) || "unknown";
+											const endDate = dateFormat(obj.qualification[key].end) || "Present";
+
+											result += `<span class="year">${startDate} - ${endDate}</span></div>`;
+										}
+
+									}
+									return result + `</div>`;
+								}
+							}
+						},
+						{
+							localId:"edit:qualification", hidden:true,
+							rows:[
+								{
+									rows:[
+										{
+											view:"multiadd", name:"qualification"
+										}
+									]
+								},
+								this.editButtons("qualification")
+							]
+						}
+					]
 				}
 			]
 		};
@@ -131,12 +163,15 @@ export default class AboutView extends JetView {
 					click:() => {
 						const newData = {};
 						const formData = this.getRoot().getValues();
-						if (label === "about")
+
+						if (label === "about" || label === "qualification")
 							newData[label] = formData[label];
 						else if (label === "skills")
 							newData[label] = formData[label].split(",");
+
 						this.$$(label).setValues(newData);
 						this._data = formData;
+
 						this.editEnd(label);
 					}
 				}

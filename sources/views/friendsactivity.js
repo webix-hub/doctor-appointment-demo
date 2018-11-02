@@ -10,7 +10,7 @@ export default class FriendsActivityView extends JetView{
 					view:"datalayout",
 					localId:"friends",
 					margin:30, padding:30,
-					type:"",
+					type:"form",
 					rows:[
 						{
 							margin:20, cols:[

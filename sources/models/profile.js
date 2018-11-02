@@ -18,11 +18,11 @@ const profileData = {
 		"minor surgery",
 		"health education"
 	],
-	qualification:[
-		{ step:"General Practitioner", time:"May 2013 - Present" },
-		{ step:"Attending Doctor", time:"April 2009 - May 2013" },
-		{ step:"Resident Doctor", time:"June 2006 - April 2009" },
-		{ step:"Internship at Princeton - Plainsboro Teaching Hospital, New Jersey, USA", time:"2005-2006" }, 
-		{ step:"University of Zurich, Doctor of Medicine", time:"2005" }
-	]
+	qualification:{
+		step4:"General Practitioner", time4:{ start: new Date(2013,4,1), end:null },
+		step3:"Attending Doctor", time3:{ start:new Date(2009,3,1), end:new Date(2013,2,31) },
+		step2:"Resident Doctor", time2:{ start:new Date(2006,5,1), end:new Date(2009,2,31) },
+		step1:"Internship at Princeton - Plainsboro Teaching Hospital, New Jersey, USA", time1:{ start:new Date(2005,8,1), end:new Date(2006,4,30) }, 
+		step0:"University of Zurich, Doctor of Medicine", time0:{ start:new Date(1999,8,1), end:new Date(2005,5,25) }
+	}
 };
