@@ -1,9 +1,12 @@
 Doctor Appointment App (for the new Webix skin)
 ===================
 
-The project on invision:
+A demo of a hospital CRM for a doctor. Includes a dashboard with statistics on patients, a profile with editing, and a login form.
 
-- https://projects.invisionapp.com/d/main#/console/12386541/321328503/preview
+**NOTE**: Backend for logging in is not implemented, for that you can visit the other repository, the links are below:
+
+* [Demo of authorization, custom PHP script](https://github.com/webix-hub/jet-start/tree/php)
+* [Webix Jet with NodeJS Express](https://github.com/webix-hub/jet-start/tree/node-express)
 
 ### How to run
 

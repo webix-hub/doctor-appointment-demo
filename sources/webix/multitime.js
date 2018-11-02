@@ -53,7 +53,6 @@ webix.protoUI({
 		this.removeView(section);
 	},
 	setValue(value){
-		console.log(value);
 		const dataLines = Object.keys(value).length / 2;
 		const inputs = this.getChildViews().length;
 		const delta = dataLines - inputs;
