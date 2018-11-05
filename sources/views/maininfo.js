@@ -1,35 +1,50 @@
 import {JetView} from "webix-jet";
 import "webix/photo";
+import {getProfileData} from "models/profile";
 
 export default class MainInfoView extends JetView {
+	socIcon(type){
+		return {
+			view:"icon", icon:`mdi mdi-${type}`, click:() => {
+				window.open(this.getRoot().getValues()[type]);
+			}
+		};
+	}
 	config(){
 		return {
-			type:"form", height:322,
+			view:"form", height:322,
 			rows:[
 				{
 					cols:[
 						{},
-						{ view:"photo", width:150, height:150, value:"dr_arienette", css:"profile_photo" },
+						{ view:"photo", width:150, height:150, name:"photo", css:"profile_photo" },
 						{}
 					]
 				},
 				{
-					view:"label", height:80, css:"doc_main",
-					template:`<span class="doc_name">Dr. Arienette Woolfe</span><span class="doc_field">General practitioner</span>`
+					view:"label", css:"doc_main", name:"name",
+					template:obj => `<span class="doc_name">Dr. ${obj.name}</span> `
+				},
+				{
+					view:"label", css:"doc_main", name:"job",
+					template:obj => `<span class="doc_field">${obj.job}</span>`
 				},
 				{
 					cols:[
 						{},
-						{ view:"icon", icon:"mdi mdi-facebook-box", click:() => window.open("https://www.facebook.com/webixui/") },
-						{ view:"icon", icon:"mdi mdi-linkedin-box", click:() => window.open("https://www.linkedin.com/showcase/development-services-with-webix-javascript-ui-library") },
-						{ view:"icon", icon:"mdi mdi-instagram", click:() => window.open("https://www.instagram.com/xbsoftware/") },
-						{ view:"icon", icon:"mdi mdi-youtube", click:() => window.open("https://www.youtube.com/channel/UC0VoOaFEFb49Rfv2TKyR-Ow") },
-						{ view:"icon", icon:"mdi mdi-twitter-box", click:() => window.open("https://twitter.com/webixui?lang=en") },
-						{ view:"icon", icon:"mdi mdi-vk-box", click:() => window.open("https://vk.com/webixui") },
+						this.socIcon("facebook","https://www.facebook.com/webixui/"),
+						this.socIcon("linkedin","https://www.linkedin.com/showcase/development-services-with-webix-javascript-ui-library"),
+						this.socIcon("instagram","https://www.instagram.com/xbsoftware/"),
+						this.socIcon("youtube","https://www.youtube.com/channel/UC0VoOaFEFb49Rfv2TKyR-Ow"),
+						this.socIcon("twitter","https://twitter.com/webixui?lang=en"),
+						this.socIcon("vk","https://vk.com/webixui"),
 						{}
 					]
 				}
 			]
 		};
+	}
+	init(){
+		this.getRoot().setValues(getProfileData());
 	}
 }

@@ -26,6 +26,12 @@
 	line-height:20px;
 	display:block;
 }
+.username{
+	max-width:150px;
+	white-space: nowrap; 
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
 .patient, .field{
 	color:#475466;
 	display:block;
@@ -84,7 +90,7 @@
 .webix_list.profile_menu .webix_list_item{
 	border:none;
 }
-/* profile */
+/* profile main info */
 .webix_el_label.doc_main .doc_name,
 .webix_el_label.doc_main .doc_field{
 	display:block;
@@ -99,6 +105,7 @@
 .webix_view.friend_photo > div{
 	padding:0px 0px 0px 0px;
 }
+/* reviews panel */
 .webix_dataview_inner_item .criterion{
 	display:block;
 	font-weight:500;
@@ -110,6 +117,7 @@
 .reviews .webix_dataview_item.tiles .webix_dataview_inner_item{
 	padding:12px;
 }
+/* friends panel */
 .status{
 	position: relative;
 	top:-50px;
@@ -122,8 +130,9 @@
 .status.offline{
 	color:#FF9800;
 }
+/* profile details */
 .profile_templates .webix_template{
-	padding:0px 0px 0px 10px;
+	padding:0px 10px 0px 10px;
 }
 .webix_view.profile_templates{
 	margin-top:0px !important;
@@ -142,6 +151,15 @@
 	float:right;
 	font-weight:500;
 }
+.webix_el_label.about_label{
+	padding-left:8px;
+	font-size:16px;
+	color:#475466;
+}
+.webix_icon.mdi.mdi-pencil{
+	color:#1ca1c1;
+}
+/* friends activity */
 .friend_photo{
 	display:inline-block;
 	border-radius:50px;
@@ -156,11 +174,7 @@
 	position: relative;
 	top:12px;
 }
-.webix_el_label.about_label{
-	padding-left:8px;
-	font-size:16px;
-	color:#475466;
-}
-.webix_icon.mdi.mdi-pencil{
-	color:#1ca1c1;
+/* settings */
+.webix_label_right{
+	padding-left:10px;
 }

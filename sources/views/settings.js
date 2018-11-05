@@ -1,35 +1,94 @@
 import {JetView} from "webix-jet";
+import {getProfileData} from "models/profile";
 
 export default class SettingsView extends JetView {
 	config(){
 		return {
 			view:"form", minWidth:560,
 			elements:[
-				{ type:"section", template:"Change password", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"Old password", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"New password", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"Repeat password", labelWidth:130, inputWidth:500 },
 				{
-					cols:[
-						{},
-						{ view:"button", value:"Reset", width:150 },
-						{ view:"button", value:"Save", type:"form", width:150 }
+					margin:30, cols:[
+						{
+							rows:[
+								{ type:"section", template:"Change password" },
+								{ view:"text", label:"Old password", labelWidth:130 },
+								{ view:"text", label:"New password", labelWidth:130 },
+								{ view:"text", label:"Repeat password", labelWidth:130 },
+								{},
+								{
+									cols:[
+										{},
+										{ view:"button", value:"Reset", width:150 },
+										{ view:"button", value:"Save", type:"form", width:150 }
+									]
+								}
+							]
+						},
+						{
+							rows:[
+								{ type:"section", template:"Personal settings" },
+								{ view:"text", label:"Name", name:"name", labelWidth:130 },
+								{ view:"text", label:"Email", name:"email", labelWidth:130 },
+								{ view:"text", label:"Phone", name:"phone", labelWidth:130 },
+								{ view:"text", label:"Address", name:"address", labelWidth:130 },
+								{},
+								{
+									cols:[
+										{},
+										{ view:"button", value:"Reset", width:150 },
+										{ view:"button", value:"Save", type:"form", width:150 }
+									]
+								}
+							]
+						}
 					]
 				},
-				{ type:"section", template:"Personal settings" },
-				{ view:"text", label:"First name", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"Last name", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"Email", labelWidth:130, inputWidth:500 },
-				{ view:"text", label:"Phone", labelWidth:130, inputWidth:500 },
 				{
-					cols:[
-						{},
-						{ view:"button", value:"Reset", width:150 },
-						{ view:"button", value:"Save", type:"form", width:150 }
+					margin:30, cols:[
+						{
+							rows:[
+								{ type:"section", template:"Notification settings" },
+								{ view:"label", template:"Receive notifications on these events:" },
+								{ view:"switch", name:"notifications_mentions", labelWidth:0, labelRight:"Mentions" },
+								{ view:"switch", name:"notifications_upcoming", labelWidth:0, labelRight:"Upcoming appointments" },
+								{ view:"switch", name:"notifications_cancelled", labelWidth:0, labelRight:"Cancelled appointments" },
+								{ view:"switch", name:"notifications_friends", labelWidth:0, labelRight:"New friends" },
+								{ view:"switch", name:"notifications_messages", labelWidth:0, labelRight:"New messages" },
+								{},
+								{
+									cols:[
+										{},
+										{ view:"button", value:"Reset", width:150 },
+										{ view:"button", value:"Save", type:"form", width:150 }
+									]
+								}
+							]
+						},
+						{
+							rows:[
+								{ type:"section", template:"Linked accounts" },
+								{ view:"text", name:"linkedin", label:"LinkedIn", labelWidth:130 },
+								{ view:"text", name:"instagram", label:"Instagram", labelWidth:130 },
+								{ view:"text", name:"youtube", label:"Youtube", labelWidth:130 },
+								{ view:"text", name:"facebook", label:"Facebook", labelWidth:130 },
+								{ view:"text", name:"twitter", label:"Twitter", labelWidth:130 },
+								{ view:"text", name:"vkontakte", label:"Vkontakte", labelWidth:130 },
+								{},
+								{
+									cols:[
+										{},
+										{ view:"button", value:"Reset", width:150 },
+										{ view:"button", value:"Save", type:"form", width:150 }
+									]
+								}
+							]
+						}
 					]
-				},
-				{}
+				}
 			]
 		};
+	}
+	init(){
+		this.getRoot().setValues(getProfileData());
 	}
 }

@@ -3,6 +3,23 @@ export function getProfileData(){
 }
 
 const profileData = {
+	name:"Arienette Woolfe",
+	job:"General practitioner",
+	email:"awoolfe@ispital.com",
+	phone:"+41 33 826 26 26",
+	address:"Gwattstrasse 93A, 3645 Thun",
+	photo:"dr_arienette",
+	"linkedin":"https://www.linkedin.com/showcase/development-services-with-webix-javascript-ui-library",
+	"instagram":"https://www.instagram.com/xbsoftware/",
+	"youtube":"https://www.youtube.com/channel/UC0VoOaFEFb49Rfv2TKyR-Ow",
+	"facebook":"https://www.facebook.com/webixui/",
+	"twitter":"https://twitter.com/webixui?lang=en",
+	"vkontakte":"https://vk.com/webixui",
+	"notifications_mentions":0,
+	"notifications_upcoming":1,
+	"notifications_cancelled":1,
+	"notifications_friends":0,
+	"notifications_messages":0,
 	about:"Dr. Arienette Woolfe is a general practitioner in Grindelwald. She received her medical degree from the University of Zurich and has been in practice for 11 years. She is one of 5 doctors at Spital Interlaken who specialize in General Practice. Dr. Woolfe is dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. She has a strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. She is willing to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Dr. Woolfe has a wide knowledge of a range of health issues that impact internal organs.",
 	schedule:{
 		day0:"Monday, Wednesday", time0:"11:00 AM - 15:00 PM",
