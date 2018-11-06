@@ -3,6 +3,8 @@ import {getProfileData} from "models/profile";
 
 export default class SettingsView extends JetView {
 	config(){
+		const oldUserData = webix.storage.session.get("demo_login_data");
+		const oldPswd = oldUserData ? oldUserData.password : "sta7wi10hm8ar4en8tte";
 		return {
 			view:"form", minWidth:560,
 			elements:[
@@ -11,14 +13,41 @@ export default class SettingsView extends JetView {
 						{
 							rows:[
 								{ type:"section", template:"Change password" },
-								{ view:"text", label:"Old password", labelWidth:130 },
-								{ view:"text", label:"New password", labelWidth:130 },
-								{ view:"text", label:"Repeat password", labelWidth:130 },
+								{
+									view:"text", localId:"oldpswd",
+									label:"Old password", labelWidth:130,
+									type:"password"
+								},
+								{
+									view:"text", localId:"pswd1", type:"password",
+									label:"New password", labelWidth:130
+								},
+								{
+									view:"text", localId:"pswd2", type:"password",
+									label:"Repeat password", labelWidth:130
+								},
 								{},
 								{
 									cols:[
 										{},
-										{ view:"button", value:"Save", type:"form", width:150 }
+										{
+											view:"button", value:"Save", type:"form", width:150,
+											click:() => {
+												const oldpswd = this.$$("oldpswd").getValue();
+												const newpswd = this.$$("pswd1").getValue();
+
+												if (oldpswd === oldPswd && newpswd === this.$$("pswd2").getValue()){
+													webix.storage.session.put("demo_login_data",{
+														user:"awoolfe", password:newpswd
+													});
+													webix.message("New password saved");
+												}
+												else if (oldpswd !== oldPswd)
+													webix.message("Incorrect old password","error");
+												else if (newpswd !== this.$$("pswd2").getValue())
+													webix.message("Check the new password in both inputs","error");
+											}
+										}
 									]
 								}
 							]
@@ -95,6 +124,7 @@ export default class SettingsView extends JetView {
 		if (form.validate()){
 			const formData = form.getValues();
 			webix.storage.session.put("demo_profile_data", formData);
+			webix.message("Saved");
 			this.app.refresh();
 		}
 	}

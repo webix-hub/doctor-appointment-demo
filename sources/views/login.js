@@ -70,10 +70,10 @@ export default class LoginView extends JetView{
 									value:"awoolfe"
 								},
 								{
-									view:"text", type:"password", name:"password",
+									view:"text", type:"password",
+									localId:"pswd", name:"password",
 									label:"<span class=\"webix_icon mdi mdi-lock\">",
-									labelWidth:30, placeholder:"Password",
-									value:"sta7wi10hm8ar4en8tte"
+									labelWidth:30, placeholder:"Password"
 								},
 								buttons
 							],
@@ -97,6 +97,8 @@ export default class LoginView extends JetView{
 			password:"sta7wi10hm8ar4en8tte"
 		};
 		this._loginData = webix.storage.session.get("demo_login_data") || login;
+
+		this.$$("pswd").setValue(this._loginData.password);
 
 		this._loginTip = webix.ui({
 			view:"tooltip",
