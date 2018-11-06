@@ -3,11 +3,13 @@ import {getFriends} from "models/friends";
 
 export default class FriendsView extends JetView {
 	config(){
+		const theme = this.app.config.theme;
+
 		return {
 			minHeight:280,
 			rows:[
 				{
-					view:"toolbar", elements:[
+					view:"toolbar", css:theme, elements:[
 						{ view:"label", template:"Friends", localId:"header" },
 						{},
 						{

@@ -3,11 +3,13 @@ import {persons} from "models/persons";
 
 export default class RegistryView extends JetView {
 	config(){
+		const theme = this.app.config.theme;
+
 		return {
 			minHeight:360,
 			rows:[
 				{
-					view:"toolbar", elements:[
+					view:"toolbar", css:theme, elements:[
 						{ view:"label", template:"Visits" }
 					]
 				},

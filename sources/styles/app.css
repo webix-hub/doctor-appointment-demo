@@ -183,3 +183,9 @@
 .webix_label_right{
 	padding-left:10px;
 }
+.theme_settings{
+	padding:5px 10px 0px 14px;
+}
+.theme_options .webix_dataview_item.tiles:hover{
+	background-color:rgb(237, 239, 240);
+}

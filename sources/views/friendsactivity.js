@@ -3,9 +3,11 @@ import {getFriendsActivity} from "models/friendsactivity";
 
 export default class FriendsActivityView extends JetView{
 	config(){
+		const theme = this.app.config.theme;
+
 		return {
 			rows:[
-				{ template:"Friends activity", type:"header" },
+				{ template:"Friends activity", height:46, css:"webix_header " + theme },
 				{
 					view:"datalayout",
 					localId:"friends",

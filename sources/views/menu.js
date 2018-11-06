@@ -2,8 +2,11 @@ import {JetView,plugins} from "webix-jet";
 
 export default class MenuView extends JetView {
 	config(){
+		const theme = this.app.config.theme;
+
 		return {
 			view:"sidebar",
+			css:theme,
 			width:200,
 			collapsed:true,
 			tooltip:{

@@ -6,6 +6,8 @@ import FriendsActivityView from "views/friendsactivity";
 
 export default class ProfileView extends JetView {
 	config(){
+		const theme = this.app.config.theme;
+
 		return {
 			view:"scrollview", borderless:true,
 			body:{
@@ -27,7 +29,7 @@ export default class ProfileView extends JetView {
 								gravity:2,
 								rows:[
 									{
-										view:"toolbar", paddingX:17, elements:[
+										view:"toolbar", css:theme, paddingX:17, elements:[
 											{},
 											{
 												view:"segmented", localId:"segmented",

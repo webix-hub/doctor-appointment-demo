@@ -8,7 +8,8 @@ export default class MyApp extends JetApp{
 			version 	: VERSION,
 			router 		: HashRouter,
 			debug 		: !PRODUCTION,
-			start 		: "/top/dashboard"
+			start 		: "/top/dashboard",
+			theme		: webix.storage.session.get("doctor_demo_theme") || ""
 		};
 
 		super({ ...defaults, ...config });
