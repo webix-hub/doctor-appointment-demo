@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import "webix/photo";
+import "webix/profilelabel";
 import {getProfileData} from "models/profile";
 
 export default class MainInfoView extends JetView {
@@ -22,12 +23,12 @@ export default class MainInfoView extends JetView {
 					]
 				},
 				{
-					view:"label", css:"doc_main", name:"name",
-					template:obj => `<span class="doc_name">Dr. ${obj.name}</span> `
+					view:"profilelabel", css:"doc_main", name:"doctor",
+					template:obj => `<span class="doc_name">Dr. ${obj}</span> `
 				},
 				{
-					view:"label", css:"doc_main", name:"job",
-					template:obj => `<span class="doc_field">${obj.job}</span>`
+					view:"profilelabel", css:"doc_main", name:"job",
+					template:obj => `<span class="doc_field">${obj}</span>`
 				},
 				{
 					cols:[

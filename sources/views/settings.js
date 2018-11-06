@@ -18,7 +18,6 @@ export default class SettingsView extends JetView {
 								{
 									cols:[
 										{},
-										{ view:"button", value:"Reset", width:150 },
 										{ view:"button", value:"Save", type:"form", width:150 }
 									]
 								}
@@ -27,16 +26,14 @@ export default class SettingsView extends JetView {
 						{
 							rows:[
 								{ type:"section", template:"Personal settings" },
-								{ view:"text", label:"Name", name:"name", labelWidth:130 },
+								{ view:"text", label:"Name", name:"doctor", labelWidth:130 },
 								{ view:"text", label:"Email", name:"email", labelWidth:130 },
 								{ view:"text", label:"Phone", name:"phone", labelWidth:130 },
 								{ view:"text", label:"Address", name:"address", labelWidth:130 },
 								{},
 								{
 									cols:[
-										{},
-										{ view:"button", value:"Reset", width:150 },
-										{ view:"button", value:"Save", type:"form", width:150 }
+										{}, this.saveButton()
 									]
 								}
 							]
@@ -57,9 +54,7 @@ export default class SettingsView extends JetView {
 								{},
 								{
 									cols:[
-										{},
-										{ view:"button", value:"Reset", width:150 },
-										{ view:"button", value:"Save", type:"form", width:150 }
+										{}, this.saveButton()
 									]
 								}
 							]
@@ -76,9 +71,7 @@ export default class SettingsView extends JetView {
 								{},
 								{
 									cols:[
-										{},
-										{ view:"button", value:"Reset", width:150 },
-										{ view:"button", value:"Save", type:"form", width:150 }
+										{}, this.saveButton()
 									]
 								}
 							]
@@ -90,5 +83,19 @@ export default class SettingsView extends JetView {
 	}
 	init(){
 		this.getRoot().setValues(getProfileData());
+	}
+	saveButton(){
+		return {
+			view:"button", value:"Save", type:"form", width:150,
+			click:() => this.updateProfileData()
+		};
+	}
+	updateProfileData(){
+		const form = this.getRoot();
+		if (form.validate()){
+			const formData = form.getValues();
+			webix.storage.session.put("demo_profile_data", formData);
+			this.app.refresh();
+		}
 	}
 }

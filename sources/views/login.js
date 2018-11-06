@@ -90,21 +90,27 @@ export default class LoginView extends JetView{
 	}
 	init(){
 		webix.delay(() => this.$$("name").focus());
+		
 		// very dummy login and password
-		this._loginData = {
+		const login = {
 			user:"awoolfe",
 			password:"sta7wi10hm8ar4en8tte"
-		}
-		this.loginTip = webix.ui({
+		};
+		this._loginData = webix.storage.session.get("demo_login_data") || login;
+
+		this._loginTip = webix.ui({
 			view:"tooltip",
 			template:"Don't worry.<br>Login is #user#<br>Password is #password#"
 		});
 
-		this.tipEvent = webix.event(this.$$("tip").$view,"click",(e) => {
-			this.loginTip.show(this._loginData,webix.html.pos(e));
+		this._tipEvent = webix.event(this.$$("tip").$view,"click",(e) => {
+			const coordinates = webix.html.pos(e);
+			coordinates.x += 50;
+			coordinates.y += 10;
+			webix.delay(() => this._loginTip.show(this._loginData,coordinates));
 		});
 	}
 	destroy(){
-		webix.eventRemove(this.tipEvent);
+		webix.eventRemove(this._tipEvent);
 	}
 }

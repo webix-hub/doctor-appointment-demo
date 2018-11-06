@@ -1,9 +1,9 @@
 export function getProfileData(){
-	return profileData;
+	return webix.storage.session.get("demo_profile_data") || profileData;
 }
 
 const profileData = {
-	name:"Arienette Woolfe",
+	doctor:"Arienette Woolfe",
 	job:"General practitioner",
 	email:"awoolfe@ispital.com",
 	phone:"+41 33 826 26 26",

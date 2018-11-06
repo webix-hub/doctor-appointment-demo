@@ -180,19 +180,10 @@ export default class AboutView extends JetView {
 				{
 					view:"button", value:"Save", type:"form", width:100,
 					click:() => {
-						const newData = {};
 						const formData = this.getRoot().getValues();
-
-						if (label === "skills")
-							newData[label] = formData[label].split(",");
-						else
-							newData[label] = formData[label];
-						
-
-						this.$$(label).setValues(newData);
-						this._data = formData;
-
-						this.editEnd(label);
+						formData["skills"] = formData["skills"].split(",");
+						webix.storage.session.put("demo_profile_data",formData);
+						this.app.refresh();
 					}
 				}
 			]

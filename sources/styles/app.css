@@ -91,14 +91,16 @@
 	border:none;
 }
 /* profile main info */
-.webix_el_label.doc_main .doc_name,
-.webix_el_label.doc_main .doc_field{
+.webix_el_profilelabel.doc_main .doc_name,
+.webix_el_profilelabel.doc_main .doc_field{
 	display:block;
 }
-.webix_el_label.doc_main .doc_name{
+.webix_el_profilelabel.doc_main .doc_name{
 	font-size:16px;
+	font-weight:500;
+	padding-top:8px;
 }
-.webix_el_label.doc_main{
+.webix_el_profilelabel.doc_main{
 	text-align:center;
 }
 .webix_view.profile_photo > div,
@@ -143,6 +145,9 @@
 }
 .days{
 	margin-bottom:6px;
+}
+.qualification{
+	padding-bottom:10px;
 }
 .skill, .qualification_step{
 	margin-bottom:4px;
