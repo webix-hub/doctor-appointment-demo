@@ -182,7 +182,12 @@ export default class AboutView extends JetView {
 					click:() => {
 						const formData = this.getRoot().getValues();
 						formData["skills"] = formData["skills"].split(",");
-						webix.storage.session.put("demo_profile_data",formData);
+						try{
+							webix.storage.session.put("demo_profile_data",formData);
+						}
+						catch(err){
+							webix.message("You blocked cookies. Data won't be saved.");
+						}
 						this.app.refresh();
 					}
 				}

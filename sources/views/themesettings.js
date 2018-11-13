@@ -22,7 +22,10 @@ export default class ThemeSettingsView extends JetView {
 							onAfterSelect:id => {
 								const newTheme = id === "dark" ? "webix_dark" : "";
 								this.app.config.theme = newTheme;
-								webix.storage.session.put("doctor_demo_theme",newTheme);
+								try{
+									webix.storage.session.put("doctor_demo_theme",newTheme);
+								}
+								catch(err){/* for blocked cookies */}
 								this.app.refresh();
 							}
 						},

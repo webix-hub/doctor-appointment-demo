@@ -92,11 +92,15 @@ export default class LoginView extends JetView{
 		webix.delay(() => this.$$("name").focus());
 		
 		// very dummy login and password
-		const login = {
+		let login = {
 			user:"awoolfe",
 			password:"sta7wi10hm8ar4en8tte"
 		};
-		this._loginData = webix.storage.session.get("demo_login_data") || login;
+		try {
+			login = webix.storage.session.get("demo_login_data")
+		}
+		catch(err){/* for blocked cookies */}
+		this._loginData = login;
 
 		this.$$("pswd").setValue(this._loginData.password);
 

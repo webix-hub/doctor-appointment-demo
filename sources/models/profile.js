@@ -1,5 +1,10 @@
 export function getProfileData(){
-	return webix.storage.session.get("demo_profile_data") || profileData;
+	let currentData = "";
+	try{
+		currentData = webix.storage.session.get("demo_profile_data");
+	}
+	catch(err){/* if cookies are blocked */}
+	return currentData || profileData;
 }
 
 const profileData = {
