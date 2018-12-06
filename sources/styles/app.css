@@ -186,6 +186,31 @@
 .theme_settings{
 	padding:5px 10px 0px 14px;
 }
-.theme_options .webix_dataview_item.tiles:hover{
-	background-color:rgb(237, 239, 240);
+.theme_options .webix_dataview_inner_item{
+	border-radius:4px;
+}
+.theme_options .webix_dataview_item.tiles.dark_theme_option .webix_dataview_inner_item:hover,
+.theme_options .webix_dataview_item.tiles.light_theme_option .webix_dataview_inner_item:hover{
+	background-color:#1CA1C1;
+	border-color:#1CA1C1;
+	color:white;
+}
+.theme_options .webix_dataview_item.tiles.dark_theme_option .webix_dataview_inner_item:active,
+.theme_options .webix_dataview_item.tiles.light_theme_option .webix_dataview_inner_item:active{
+	background-color:#1CA1C1;
+	color:white;
+	box-shadow:0px 0px 10px #475466;
+}
+.theme_color{
+	display:block;
+	margin-top:6px;
+}
+.theme_options .webix_dataview_item.tiles.light_theme_option .webix_dataview_inner_item{
+	color:#475466;
+	background-color:white;
+}
+.theme_options .webix_dataview_item.tiles.dark_theme_option .webix_dataview_inner_item{
+	color:white;
+	background-color:#475466;
+	border:1px solid #475466;
 }

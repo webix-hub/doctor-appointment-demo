@@ -66,8 +66,7 @@ export default class LoginView extends JetView{
 								{
 									view:"text", name:"user", localId:"name",
 									label:"<span class=\"webix_icon mdi mdi-account\">",
-									labelWidth:30, placeholder:"Username",
-									value:"awoolfe"
+									labelWidth:30, placeholder:"Username"
 								},
 								{
 									view:"text", type:"password",
@@ -97,11 +96,13 @@ export default class LoginView extends JetView{
 			password:"sta7wi10hm8ar4en8tte"
 		};
 		try {
-			login = webix.storage.session.get("demo_login_data")
+			const saved = webix.storage.session.get("demo_login_data");
+			if (saved) login = saved;
 		}
 		catch(err){/* for blocked cookies */}
 		this._loginData = login;
 
+		this.$$("name").setValue(this._loginData.user);
 		this.$$("pswd").setValue(this._loginData.password);
 
 		this._loginTip = webix.ui({

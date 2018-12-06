@@ -8,7 +8,7 @@ export default class ToolView extends JetView {
 
 		return {
 			view:"toolbar",
-			css:theme,
+			css:theme.toolbar,
 			height:56,
 			elements:[
 				{

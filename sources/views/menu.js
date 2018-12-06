@@ -6,7 +6,7 @@ export default class MenuView extends JetView {
 
 		return {
 			view:"sidebar",
-			css:theme,
+			css:theme.sidebar,
 			width:200,
 			collapsed:true,
 			tooltip:{

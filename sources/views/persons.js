@@ -9,7 +9,7 @@ export default class PersonsView extends JetView {
 		return {
 			rows:[
 				{
-					view:"toolbar", css:theme,
+					view:"toolbar", css:theme.toolbar,
 					localId:"toolbar",
 					visibleBatch:"default",
 					elements:[

@@ -9,7 +9,7 @@ export default class FriendsView extends JetView {
 			minHeight:280,
 			rows:[
 				{
-					view:"toolbar", css:theme, elements:[
+					view:"toolbar", css:theme.toolbar, elements:[
 						{ view:"label", template:"Friends", localId:"header" },
 						{},
 						{

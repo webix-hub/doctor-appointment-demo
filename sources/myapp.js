@@ -16,12 +16,12 @@ export default class MyApp extends JetApp{
 			router 		: HashRouter,
 			debug 		: !PRODUCTION,
 			start 		: "/top/dashboard",
-			theme		: theme || ""
+			theme		: theme || {}
 		};
 
 		super({ ...defaults, ...config });
 
-		this.attachEvent("app:error:resolve", function(err, url) {
+		this.attachEvent("app:error:resolve", function() {
 			webix.delay(() => this.show("/top/dashboard"));
 		});
 	}
