@@ -33,7 +33,7 @@ export default class ProfileMenuView extends JetView {
 		this.use(plugins.Menu,{
 			id:"menu",
 			urls:{
-				"profile":"profile/about",
+				"profile":"profile/profileinfo",
 				"logout":"/login"
 			}
 		})

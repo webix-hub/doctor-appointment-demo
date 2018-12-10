@@ -3,7 +3,7 @@ import "webix/multidate";
 import "webix/multitime";
 import {getProfileData} from "models/profile";
 
-export default class AboutView extends JetView {
+export default class ProfileInfoView extends JetView {
 	config(){
 		const dateFormat = webix.Date.dateToStr("%F %Y");
 
@@ -21,10 +21,7 @@ export default class AboutView extends JetView {
 						{
 							localId:"edit:about", hidden:true,
 							rows:[
-								{
-									view:"textarea", 
-									name:"about", height:140
-								},
+								{ view:"textarea", name:"about", height:140 },
 								this.editButtons("about")
 							]
 						}
@@ -50,7 +47,7 @@ export default class AboutView extends JetView {
 						},
 						{
 							localId:"edit:schedule", hidden:true,
-							rows:[
+							rows:[	// outer layout for multiline control
 								{
 									rows:[
 										{
@@ -82,7 +79,7 @@ export default class AboutView extends JetView {
 						},
 						{
 							localId:"edit:skills", hidden:true,
-							rows:[
+							rows:[		// outer layout for multiline control
 								{
 									rows:[
 										{
@@ -123,7 +120,7 @@ export default class AboutView extends JetView {
 						},
 						{
 							localId:"edit:qualification", hidden:true,
-							rows:[
+							rows:[		// outer layout for multiline control
 								{
 									rows:[
 										{

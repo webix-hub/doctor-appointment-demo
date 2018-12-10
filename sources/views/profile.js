@@ -36,7 +36,7 @@ export default class ProfileView extends JetView {
 												view:"segmented", localId:"segmented",
 												width:300,
 												options:[
-													{ id:"about", value:"About" },
+													{ id:"profileinfo", value:"About" },
 													{ id:"settings", value:"Settings" }
 												]
 											}
