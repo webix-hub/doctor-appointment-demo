@@ -59,7 +59,8 @@ module.exports = function(env) {
 				APPNAME: `"${pack.name}"`,
 				PRODUCTION : production,
 				BUILD_AS_MODULE : (asmodule || standalone)
-			})
+			}),
+			new webpack.IgnorePlugin(/jet-locales/)
 		],
 		devServer:{
 			stats:"errors-only"

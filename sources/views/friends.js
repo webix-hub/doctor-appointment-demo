@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import {getFriends} from "models/friends";
+import "webix/nstateicon";
 
 export default class FriendsView extends JetView {
 	config(){
@@ -56,7 +57,7 @@ export default class FriendsView extends JetView {
 						  		<span class="doctorname">${obj.name}</span>
 								<span class="field">${(obj.field)}</span>
 								<span class="webix_icon mdi mdi-circle status ${obj.status}"></span>
-							</div>`
+							</div>`;
 						}
 					}
 				}

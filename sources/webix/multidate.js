@@ -1,7 +1,7 @@
 webix.protoUI({
 	name:"multidate",
 	defaults:{
-	  	borderless:true,
+		borderless:true,
 		rows:[
 			{
 				margin:10, cols:[

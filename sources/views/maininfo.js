@@ -24,7 +24,7 @@ export default class MainInfoView extends JetView {
 				},
 				{
 					view:"profilelabel", css:"doc_main", name:"doctor",
-					template:obj => `<span class="doc_name">Dr. ${obj}</span> `
+					template:obj => `<span class="doc_name">Dr. ${obj}</span>`
 				},
 				{
 					view:"profilelabel", css:"doc_main", name:"job",
@@ -33,12 +33,12 @@ export default class MainInfoView extends JetView {
 				{
 					cols:[
 						{},
-						this.socIcon("facebook","https://www.facebook.com/webixui/"),
-						this.socIcon("linkedin","https://www.linkedin.com/showcase/development-services-with-webix-javascript-ui-library"),
-						this.socIcon("instagram","https://www.instagram.com/xbsoftware/"),
-						this.socIcon("youtube","https://www.youtube.com/channel/UC0VoOaFEFb49Rfv2TKyR-Ow"),
-						this.socIcon("twitter","https://twitter.com/webixui?lang=en"),
-						this.socIcon("vk","https://vk.com/webixui"),
+						this.socIcon("facebook"),
+						this.socIcon("linkedin"),
+						this.socIcon("instagram"),
+						this.socIcon("youtube"),
+						this.socIcon("twitter"),
+						this.socIcon("vk"),
 						{}
 					]
 				}

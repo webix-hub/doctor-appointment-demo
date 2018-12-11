@@ -1,16 +1,15 @@
 import {JetView} from "webix-jet";
 import {getProfileData} from "models/profile";
+import {getLoginData} from "models/userdata";
 
 export default class SettingsView extends JetView {
 	config(){
-		let oldUserData = "";
-		try{
-			oldUserData = webix.storage.session.get("demo_login_data");
-		}
-		catch(err){/* for blocked cookies */}
-		const oldPswd = oldUserData ? oldUserData.password : "sta7wi10hm8ar4en8tte";
+		const oldPswd = getLoginData().password;
 		return {
 			view:"form", minWidth:560,
+			rules:{
+				"doctor":webix.rules.isNotEmpty
+			},
 			elements:[
 				{
 					margin:30, cols:[
@@ -45,10 +44,10 @@ export default class SettingsView extends JetView {
 														webix.storage.session.put("demo_login_data",{
 															user:"awoolfe", password:newpswd
 														});
-														webix.message("New password saved");
+														webix.message("New password saved","success");
 													}
 													catch(err){
-														webix.message("You blocked cookies. Changes won't be saved.");
+														webix.message("You blocked cookies. Changes won't be saved.","debug");
 													}
 												}
 												else if (oldpswd !== oldPswd)
@@ -138,7 +137,7 @@ export default class SettingsView extends JetView {
 			catch(err){
 				webix.message("You blocked cookies. Changes won't be saved.");
 			}
-			webix.message("Saved");
+			webix.message("Saved","success");
 			this.app.refresh();
 		}
 	}

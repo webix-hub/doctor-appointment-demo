@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import {getLoginData} from "models/userdata";
 
 export default class LoginView extends JetView{
 	config(){
@@ -35,6 +36,8 @@ export default class LoginView extends JetView{
 											const up = this.$$("form").getValues();
 											if (up.user === this._loginData.user && up.password === this._loginData.password)
 												this.show("/top/dashboard");
+											else
+												webix.message("Wrong login or password","error");
 										}
 									}
 								},
@@ -91,16 +94,7 @@ export default class LoginView extends JetView{
 		webix.delay(() => this.$$("name").focus());
 		
 		// very dummy login and password
-		let login = {
-			user:"awoolfe",
-			password:"sta7wi10hm8ar4en8tte"
-		};
-		try {
-			const saved = webix.storage.session.get("demo_login_data");
-			if (saved) login = saved;
-		}
-		catch(err){/* for blocked cookies */}
-		this._loginData = login;
+		this._loginData = getLoginData();
 
 		this.$$("name").setValue(this._loginData.user);
 		this.$$("pswd").setValue(this._loginData.password);

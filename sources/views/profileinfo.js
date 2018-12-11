@@ -101,7 +101,7 @@ export default class ProfileInfoView extends JetView {
 							css:"profile_templates", autoheight:true,
 							template:obj => {
 								if (obj.qualification){
-									let result = `<div class="qualification">`;
+									let result = "<div class=\"qualification\">";
 									for (let key in obj.qualification){
 
 										if (key.indexOf("step") !== -1)	
@@ -114,7 +114,7 @@ export default class ProfileInfoView extends JetView {
 										}
 
 									}
-									return result + `</div>`;
+									return result + "</div>";
 								}
 							}
 						},

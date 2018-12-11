@@ -36,7 +36,7 @@ export default class ProfileMenuView extends JetView {
 				"profile":"profile/profileinfo",
 				"logout":"/login"
 			}
-		})
+		});
 	}
 	showMenu(pos){
 		this.getRoot().show(pos);

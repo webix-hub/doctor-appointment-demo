@@ -19,6 +19,7 @@ export default class ThemeSettingsView extends JetView {
 						onAfterSelect:id => {
 							const newTheme = id == "dark" ? "webix_dark" : "";
 							name = name.toLowerCase();
+
 							if (name == "theme")
 								for (let k in this.app.config.theme)
 									this.app.config.theme[k] = newTheme;
@@ -52,7 +53,7 @@ export default class ThemeSettingsView extends JetView {
 					this.dataview("Sidebar")
 				]
 			}
-		}
+		};
 	}
 	showPopup(position){
 		this.getRoot().show(position);

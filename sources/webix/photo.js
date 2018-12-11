@@ -11,7 +11,8 @@ webix.protoUI({
 		return this.config.value;
 	},
 	setValue(value){
-		const height = width = this.config.height;
+		let height, width;
+		height = width = this.config.height;
 		this.setHTML(`<img style="height:${height}px;width:${width}px;" src="data/photos/${value}_1.jpg" />`);
 		this.config.value = value;
 	}
