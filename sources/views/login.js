@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import {getLoginData} from "models/userdata";
+import {getLoginData} from "helpers/userdata";
 
 export default class LoginView extends JetView{
 	config(){
@@ -31,6 +31,7 @@ export default class LoginView extends JetView{
 							rows:[
 								{
 									view:"button", type:"form", value:"Log in",
+									hotkey:"enter",
 									click:() => {
 										if (this.$$("form").validate()){
 											const up = this.$$("form").getValues();
@@ -93,7 +94,7 @@ export default class LoginView extends JetView{
 	init(){
 		webix.delay(() => this.$$("name").focus());
 		
-		// very dummy login and password
+		// for demo only
 		this._loginData = getLoginData();
 
 		this.$$("name").setValue(this._loginData.user);

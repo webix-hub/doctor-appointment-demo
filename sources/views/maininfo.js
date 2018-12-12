@@ -6,7 +6,8 @@ import {getProfileData} from "models/profile";
 export default class MainInfoView extends JetView {
 	socIcon(type){
 		return {
-			view:"icon", icon:`mdi mdi-${type}`, click:() => {
+			view:"icon", icon:`mdi mdi-${type}`, type:type,
+			click:() => {
 				window.open(this.getRoot().getValues()[type]);
 			}
 		};
@@ -46,6 +47,13 @@ export default class MainInfoView extends JetView {
 		};
 	}
 	init(){
-		this.getRoot().setValues(getProfileData());
+		const form = this.getRoot();
+		const data = getProfileData();
+		form.setValues(data);
+		const icons = form.queryView({ view:"icon" },"all");
+		for (let i = 0; i < icons.length; i++){
+			if (!data[icons[i].config.type])
+				icons[i].hide();
+		}
 	}
 }

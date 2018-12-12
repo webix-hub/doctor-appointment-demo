@@ -1,10 +1,18 @@
 import {JetView} from "webix-jet";
 import {getProfileData} from "models/profile";
-import {getLoginData} from "models/userdata";
+import {getLoginData} from "helpers/userdata";
 
 export default class SettingsView extends JetView {
 	config(){
 		const oldPswd = getLoginData().password;
+
+		function isLink(value){
+			return !value || /^https:\/\//.test(value);
+		}
+		function isEmail(value){
+			return !value || /\S+@[^@\s]+\.[^2\s]+$/.test(value);
+		}
+
 		return {
 			view:"form", minWidth:560,
 			rules:{
@@ -64,15 +72,11 @@ export default class SettingsView extends JetView {
 							rows:[
 								{ type:"section", template:"Personal settings" },
 								{ view:"text", label:"Name", name:"doctor", labelWidth:130 },
-								{ view:"text", label:"Email", name:"email", labelWidth:130 },
-								{ view:"text", label:"Phone", name:"phone", labelWidth:130 },
+								{ view:"text", label:"Email", name:"email", labelWidth:130, validate:isEmail },
+								{ view:"text", label:"Phone", name:"phone", labelWidth:130, pattern:webix.patterns.phone },
 								{ view:"text", label:"Address", name:"address", labelWidth:130 },
 								{},
-								{
-									cols:[
-										{}, this.saveButton()
-									]
-								}
+								this.saveButton()
 							]
 						}
 					]
@@ -89,28 +93,20 @@ export default class SettingsView extends JetView {
 								{ view:"switch", name:"notifications_friends", labelWidth:0, labelRight:"New friends" },
 								{ view:"switch", name:"notifications_messages", labelWidth:0, labelRight:"New messages" },
 								{},
-								{
-									cols:[
-										{}, this.saveButton()
-									]
-								}
+								this.saveButton()
 							]
 						},
 						{
 							rows:[
 								{ type:"section", template:"Linked accounts" },
-								{ view:"text", name:"linkedin", label:"LinkedIn", labelWidth:130 },
-								{ view:"text", name:"instagram", label:"Instagram", labelWidth:130 },
-								{ view:"text", name:"youtube", label:"Youtube", labelWidth:130 },
-								{ view:"text", name:"facebook", label:"Facebook", labelWidth:130 },
-								{ view:"text", name:"twitter", label:"Twitter", labelWidth:130 },
-								{ view:"text", name:"vkontakte", label:"Vkontakte", labelWidth:130 },
+								{ view:"text", name:"linkedin", validate:isLink, label:"LinkedIn", labelWidth:130 },
+								{ view:"text", name:"instagram", validate:isLink, label:"Instagram", labelWidth:130 },
+								{ view:"text", name:"youtube", validate:isLink, label:"Youtube", labelWidth:130 },
+								{ view:"text", name:"facebook", validate:isLink, label:"Facebook", labelWidth:130 },
+								{ view:"text", name:"twitter", validate:isLink, label:"Twitter", labelWidth:130 },
+								{ view:"text", name:"vkontakte", validate:isLink, label:"Vkontakte", labelWidth:130 },
 								{},
-								{
-									cols:[
-										{}, this.saveButton()
-									]
-								}
+								this.saveButton()
 							]
 						}
 					]
@@ -123,8 +119,13 @@ export default class SettingsView extends JetView {
 	}
 	saveButton(){
 		return {
-			view:"button", value:"Save", type:"form", width:150,
-			click:() => this.updateProfileData()
+			cols:[
+				{},
+				{
+					view:"button", value:"Save", type:"form", width:150,
+					click:() => this.updateProfileData()
+				}
+			]
 		};
 	}
 	updateProfileData(){
