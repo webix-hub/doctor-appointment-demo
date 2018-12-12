@@ -19,7 +19,7 @@ const profileData = {
 	youtube:"https://www.youtube.com/channel/UC0VoOaFEFb49Rfv2TKyR-Ow",
 	facebook:"https://www.facebook.com/webixui/",
 	twitter:"https://twitter.com/webixui?lang=en",
-	vkontakte:"https://vk.com/webixui",
+	vk:"https://vk.com/webixui",
 	notifications_mentions:0,
 	notifications_upcoming:1,
 	notifications_cancelled:1,

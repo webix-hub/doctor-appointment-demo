@@ -1,4 +1,4 @@
-import {JetView,plugins} from "webix-jet";
+import {JetView} from "webix-jet";
 
 export default class ProfileMenuView extends JetView {
 	config(){
@@ -9,34 +9,25 @@ export default class ProfileMenuView extends JetView {
 				localId:"menu",
 				autoheight:true,
 				width:150,
-				select:true,
 				borderless:true,
 				css:"profile_menu",
 				data:[
 					{ id:"profile", value:"My profile", icon:"mdi mdi-account" },
-					{ id:"settings", value:"Settings", icon:"mdi mdi-settings" },
+					{ id:"dashboard", value:"My dashboard", icon:"mdi mdi-view-dashboard" },
 					{ id:"logout", value:"Log out", icon:"mdi mdi-logout" }
 				],
 				on:{
-					onAfterSelect:id => {
-						if (id !== "logout")
-							webix.delay(() => {
-								this.getRoot().hide();
-								this.$$("menu").unselect();
-							});
+					onItemClick:id => {
+						if (id === "profile"){
+							this.show("profile/profileinfo");
+							this.getRoot().hide();
+						}
+						else if (id === "logout")
+							this.show("/login");
 					}
 				}
 			}
 		};
-	}
-	init(){
-		this.use(plugins.Menu,{
-			id:"menu",
-			urls:{
-				"profile":"profile/profileinfo",
-				"logout":"/login"
-			}
-		});
 	}
 	showMenu(pos){
 		this.getRoot().show(pos);

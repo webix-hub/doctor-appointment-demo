@@ -17,8 +17,7 @@ export default class ProfileView extends JetView {
 						type:"wide",
 						rows:[
 							MainInfoView,
-							ReviewsView,
-							FriendsView
+							ReviewsView
 						]
 					},
 					{
@@ -45,7 +44,15 @@ export default class ProfileView extends JetView {
 									{ $subview:true }
 								]
 							},
-							FriendsActivityView
+							//FriendsActivityView
+							{}
+						]
+					},
+					{
+						type:"wide",
+						rows:[
+							FriendsView,
+							{}
 						]
 					}
 				]

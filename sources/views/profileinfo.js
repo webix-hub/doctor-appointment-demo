@@ -6,9 +6,14 @@ import {getProfileData} from "models/profile";
 export default class ProfileInfoView extends JetView {
 	config(){
 		const dateFormat = webix.Date.dateToStr("%F %Y");
+		
+		function isEmail(value){
+			return !value || /\S+@[^@\s]+\.[^2\s]+$/.test(value);
+		}
 
 		return {
-			view:"form", minWidth:680, padding:10,
+			view:"form",
+			padding:10,
 			rows:[
 				this.toolbar("About",56),
 				{
@@ -23,6 +28,21 @@ export default class ProfileInfoView extends JetView {
 							rows:[
 								{ view:"textarea", name:"about", height:140 },
 								this.editButtons("about")
+							]
+						}
+					]
+				},
+				this.toolbar("Personal settings",130),
+				{
+					cols:[
+						{ localId:"personal settings" },
+						{
+							localId:"edit:personal settings", hidden:true, rows:[
+								{ view:"text", label:"Name", name:"doctor", labelWidth:130, validate:webix.rules.isNotEmpty },
+								{ view:"text", label:"Email", name:"email", labelWidth:130, validate:isEmail },
+								{ view:"text", label:"Phone", name:"phone", labelWidth:130, pattern:webix.patterns.phone },
+								{ view:"text", label:"Address", name:"address", labelWidth:130 },
+								this.editButtons("personal settings")
 							]
 						}
 					]
@@ -105,12 +125,13 @@ export default class ProfileInfoView extends JetView {
 									for (let key in obj.qualification){
 
 										if (key.indexOf("step") !== -1)	
-											result += `<div class="qualification_step"> ${obj.qualification[key]}`;
+											result += `<div class="qualification_step">
+														<span class="place">${obj.qualification[key]}</span>`;
 										else if (key.indexOf("time") !== -1){
 											const startDate = dateFormat(obj.qualification[key].start) || "unknown";
 											const endDate = dateFormat(obj.qualification[key].end) || "Present";
 
-											result += `<span class="year">${startDate} - ${endDate}</span></div>`;
+											result += ` - <span>${startDate} - ${endDate}</span></div>`;
 										}
 
 									}

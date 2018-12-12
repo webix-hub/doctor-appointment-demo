@@ -7,6 +7,22 @@ import StatisticsView from "views/statistics";
 
 export default class DashboardView extends JetView{
 	config(){
+		const form_and_chat = {
+			id:"form-and-chart",
+			type:"wide",
+			rows:[
+				{
+					height:420,
+					type:"wide",
+					responsive:"form-and-chart",
+					cols:[
+						InformationView,
+						StatisticsView
+					]
+				}
+			]
+		};
+
 		return {
 			type:"wide",
 			cols:[
@@ -17,21 +33,7 @@ export default class DashboardView extends JetView{
 						type:"wide",
 						rows:[
 							RegistryView,
-							{
-								id:"form-and-chart",
-								type:"wide",
-								rows:[
-									{
-										height:420,
-										type:"wide",
-										responsive:"form-and-chart",
-										cols:[
-											InformationView,
-											StatisticsView
-										]
-									}
-								]
-							}
+							form_and_chat
 						]
 					}
 				},

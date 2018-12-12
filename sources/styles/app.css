@@ -7,7 +7,7 @@
 	background:url(webix-logo.svg) 2px 2px no-repeat;
 }
 /* list of patients */
-.userphoto, .doctorphoto{
+.user_photo, .doctor_photo, .friend_photo{
 	display:inline-block;
 	border-radius:25px;
 	width:48px;
@@ -41,6 +41,10 @@
 .persons_list .webix_list_item,
 .persons_list .webix_list_item.webix_selected{
 	padding:8px 12px;
+}
+.friends_activity_list .webix_list_item,
+.friends_activity_list .webix_list_item.webix_selected{
+	padding:14px 16px;
 }
 /* notifications */
 .notifications .webix_list_item,
@@ -152,8 +156,7 @@
 .skill, .qualification_step{
 	margin-bottom:4px;
 }
-.year{
-	float:right;
+.place{
 	font-weight:500;
 }
 .webix_el_label.about_label{
@@ -161,16 +164,13 @@
 	font-size:16px;
 	color:#475466;
 }
-.webix_icon.mdi.mdi-pencil{
-	color:#1ca1c1;
-}
 /* friends activity */
 .friend_photo{
 	display:inline-block;
 	border-radius:50px;
 	float:left;
 }
-.webix_template .event_details{
+.event_details{
 	font-weight:500;
 	color:#1ca1c1;
 	cursor:pointer;

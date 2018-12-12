@@ -7,7 +7,6 @@ export default class FriendsView extends JetView {
 		const theme = this.app.config.theme;
 
 		return {
-			minHeight:280,
 			rows:[
 				{
 					view:"toolbar", css:theme.toolbar, elements:[
@@ -46,13 +45,15 @@ export default class FriendsView extends JetView {
 					]
 				},
 				{
-					view:"list", css:"persons_list", select:true,
-					localId:"list",
+					view:"list", localId:"list",
+					css:"persons_list",
+					select:true,
+					width:250, autoheight:true,
 					type:{
 						height:65,
 						width:"auto",
 						template:obj => {
-							return `<image class="doctorphoto" src="data/photos/${obj.photo}_1.jpg" />
+							return `<image class="doctor_photo" src="data/photos/${obj.photo}_1.jpg" />
 							<div class="text">
 						  		<span class="doctorname">${obj.name}</span>
 								<span class="field">${(obj.field)}</span>

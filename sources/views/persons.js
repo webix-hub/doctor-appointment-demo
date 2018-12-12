@@ -59,7 +59,7 @@ export default class PersonsView extends JetView {
 					width:250,
 					select:true,
 					type:{
-						template:obj => `<image class="userphoto" src="data/photos/${obj.photo}_1.jpg" />
+						template:obj => `<image class="user_photo" src="data/photos/${obj.photo}_1.jpg" />
 							<div class="text">
 						  		<span class="username">${obj.fname} ${obj.lname}</span>
 						  		<span class="patient">${(obj.type === 1) ? "Inpatient" : "Outpatient"}</span>

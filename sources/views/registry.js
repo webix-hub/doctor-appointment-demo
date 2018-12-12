@@ -21,7 +21,6 @@ export default class RegistryView extends JetView {
 						{ id:"id", header:"#", width:30, sort:"int" },
 						{
 							id:"type", header:"", sort:"int",
-							tooltip:"#type#",
 							width:40,
 							template:data => {
 								let type = (data.type === 1) ? "gold" : "grey";

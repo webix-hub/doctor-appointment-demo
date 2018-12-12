@@ -11,16 +11,7 @@ export default class ToolView extends JetView {
 			css:theme.toolbar,
 			height:56,
 			elements:[
-				{
-					paddingY:7,
-					rows:[
-						{
-							view:"icon", icon:"mdi mdi-menu",
-							tooltip:"Toggle menu",
-							click:() => this.app.callEvent("menu:toggle")
-						}
-					]
-				},
+				{ width:4 },
 				{ css:"logo" },
 				{},
 				{

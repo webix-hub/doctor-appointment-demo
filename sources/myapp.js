@@ -15,14 +15,14 @@ export default class MyApp extends JetApp{
 			version 	: VERSION,
 			router 		: HashRouter,
 			debug 		: !PRODUCTION,
-			start 		: "/top/dashboard",
+			start 		: "/login",
 			theme		: theme || { toolbar:"", sidebar:"" }
 		};
 
 		super({ ...defaults, ...config });
 
 		this.attachEvent("app:error:resolve", function() {
-			webix.delay(() => this.show("/top/dashboard"));
+			webix.delay(() => this.show("/login"));
 		});
 	}
 }
