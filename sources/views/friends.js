@@ -10,7 +10,7 @@ export default class FriendsView extends JetView {
 			rows:[
 				{
 					view:"toolbar", css:theme.toolbar, elements:[
-						{ view:"label", template:"Friends", localId:"header" },
+						{ view:"label", template:"Friends", localId:"header", width:110 },
 						{},
 						{
 							view:"nstateicon", tooltip:true, tip:"Show",
@@ -48,7 +48,7 @@ export default class FriendsView extends JetView {
 					view:"list", localId:"list",
 					css:"persons_list",
 					select:true,
-					width:250, autoheight:true,
+					width:300, autoheight:true,
 					type:{
 						height:65,
 						width:"auto",
@@ -68,6 +68,6 @@ export default class FriendsView extends JetView {
 	init(){
 		const list = this.$$("list");
 		list.parse(getFriends());
-		this.$$("header").setHTML(`Friends (${list.count()})`);
+		this.$$("header").setHTML(`Friends&nbsp;(${list.count()})`);
 	}
 }

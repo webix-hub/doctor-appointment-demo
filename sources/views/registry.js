@@ -42,7 +42,7 @@ export default class RegistryView extends JetView {
 						{ id:"symptoms", header:"Symptoms", sort:"text", fillspace:3 }
 					],
 					on:{
-						onAfterSelect:record => this.app.callEvent("person:select",[record])
+						onAfterSelect:record => this.app.callEvent("record:select",[record])
 					}
 				}
 			]

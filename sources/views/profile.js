@@ -15,6 +15,7 @@ export default class ProfileView extends JetView {
 				cols:[
 					{
 						type:"wide",
+						maxWidth:360,
 						rows:[
 							MainInfoView,
 							ReviewsView
@@ -30,7 +31,6 @@ export default class ProfileView extends JetView {
 									{
 										view:"toolbar", css:theme.toolbar,
 										paddingX:17, elements:[
-											{},
 											{
 												view:"segmented", localId:"segmented",
 												width:300,
@@ -38,7 +38,8 @@ export default class ProfileView extends JetView {
 													{ id:"profileinfo", value:"About" },
 													{ id:"settings", value:"Settings" }
 												]
-											}
+											},
+											{}
 										]
 									},
 									{ $subview:true }

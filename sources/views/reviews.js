@@ -29,11 +29,11 @@ export default class ReviewsView extends JetView {
 					]
 				},
 				{
-					view:"dataview", xCount:2, select:true,
+					view:"dataview", xCount:1, select:true,
 					css:"reviews", localId:"reviews",
-					height:340, minWidth:310,
+					height:466, minWidth:310,
 					type:{
-						width:"auto", type:"tiles", height:80,
+						width:"auto", type:"tiles", height:56,
 						template:obj => {
 							let result = "";
 							for (let i = 1; i <= 5; i++){

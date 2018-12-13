@@ -18,12 +18,12 @@ export default class ProfileMenuView extends JetView {
 				],
 				on:{
 					onItemClick:id => {
-						if (id === "profile"){
-							this.show("profile/profileinfo");
+						if (id === "logout")
+							this.show("/login");
+						else{
+							(id === "profile") ? this.show("profile/profileinfo") :	this.show(id);
 							this.getRoot().hide();
 						}
-						else if (id === "logout")
-							this.show("/login");
 					}
 				}
 			}

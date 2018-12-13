@@ -115,6 +115,11 @@
 .webix_dataview_inner_item .criterion{
 	display:block;
 	font-weight:500;
+	float:left;
+}
+.webix_dataview_inner_item .stars{
+	display:block;
+	float:right;
 }
 .webix_dataview_inner_item .stars .star{
 	margin-left:-4px;
@@ -149,12 +154,13 @@
 }
 .days{
 	margin-bottom:6px;
+	color:rgb(143, 142, 142);
 }
 .qualification{
 	padding-bottom:10px;
 }
-.skill, .qualification_step{
-	margin-bottom:4px;
+.skill, .qualification_step, .contact{
+	margin-bottom:8px;
 }
 .place{
 	font-weight:500;
@@ -165,7 +171,7 @@
 	color:#475466;
 }
 /* friends activity */
-.friend_photo{
+/* .friend_photo{
 	display:inline-block;
 	border-radius:50px;
 	float:left;
@@ -178,7 +184,7 @@
 .activity_text{
 	position: relative;
 	top:12px;
-}
+} */
 /* settings */
 .webix_label_right{
 	padding-left:10px;

@@ -85,6 +85,9 @@ export default class PersonsView extends JetView {
 			persons.updateItem(data.id,data);
 		});
 
-		this.on(this.app,"person:select",record => list.select(record.id));
+		this.on(this.app,"record:select",record => {
+			list.select(record.id);
+			list.showItem(record.id);
+		});
 	}
 }
