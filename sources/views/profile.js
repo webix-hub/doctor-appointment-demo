@@ -2,7 +2,6 @@ import {JetView,plugins} from "webix-jet";
 import MainInfoView from "views/maininfo";
 import ReviewsView from "views/reviews";
 import FriendsView from "views/friends";
-import FriendsActivityView from "views/friendsactivity";
 
 export default class ProfileView extends JetView {
 	config(){
@@ -11,7 +10,7 @@ export default class ProfileView extends JetView {
 		return {
 			view:"scrollview", borderless:true,
 			body:{
-				type:"wide",
+				type:"space",
 				cols:[
 					{
 						type:"wide",
@@ -22,31 +21,22 @@ export default class ProfileView extends JetView {
 						]
 					},
 					{
-						gravity:2,
-						type:"wide",
 						rows:[
 							{
-								gravity:2,
-								rows:[
+								view:"toolbar", css:theme.toolbar,
+								paddingX:17, elements:[
 									{
-										view:"toolbar", css:theme.toolbar,
-										paddingX:17, elements:[
-											{
-												view:"segmented", localId:"segmented",
-												width:300,
-												options:[
-													{ id:"profileinfo", value:"About" },
-													{ id:"settings", value:"Settings" }
-												]
-											},
-											{}
+										view:"segmented", localId:"segmented",
+										width:300,
+										options:[
+											{ id:"profileinfo", value:"About" },
+											{ id:"settings", value:"Settings" }
 										]
 									},
-									{ $subview:true }
+									{}
 								]
 							},
-							//FriendsActivityView
-							{}
+							{ $subview:true }
 						]
 					},
 					{
@@ -61,6 +51,11 @@ export default class ProfileView extends JetView {
 		};
 	}
 	init(){
-		this.use(plugins.Menu,"segmented");
+		this.use(plugins.Menu,{
+			id:"segmented",
+			urls:{
+				"profileinfo":"profileinfo/about"
+			}
+		});
 	}
 }

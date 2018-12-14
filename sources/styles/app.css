@@ -1,4 +1,4 @@
-/* toolbar */
+toolbar
 .toolbar_button button{
 	padding:0;
 	text-align:center;
@@ -28,9 +28,9 @@
 }
 .username{
 	max-width:150px;
-	white-space: nowrap; 
-	text-overflow: ellipsis;
-	overflow: hidden;
+	white-space:nowrap; 
+	text-overflow:ellipsis;
+	overflow:hidden;
 }
 .patient, .field{
 	color:#475466;
@@ -130,7 +130,7 @@
 }
 /* friends panel */
 .status{
-	position: relative;
+	position:relative;
 	top:-50px;
 	left:-30px;
 	font-size:12px !important;
@@ -182,7 +182,7 @@
 	cursor:pointer;
 }
 .activity_text{
-	position: relative;
+	position:relative;
 	top:12px;
 } */
 /* settings */

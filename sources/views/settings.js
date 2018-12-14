@@ -29,7 +29,6 @@ export default class SettingsView extends JetView {
 							view:"text", localId:"pswd2", type:"password",
 							label:"Repeat password", labelWidth:130
 						},
-						{},
 						{
 							cols:[
 								{},
@@ -79,7 +78,8 @@ export default class SettingsView extends JetView {
 						{},
 						this.saveButton()
 					]
-				}
+				},
+				{}
 			]
 		};
 	}

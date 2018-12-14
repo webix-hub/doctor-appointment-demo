@@ -6,16 +6,7 @@ export default class TopView extends JetView{
 		return {
 			rows:[
 				ToolView,
-				{
-					cols:[
-						{
-							type:"space",
-							cols:[
-								{ $subview:true }
-							]
-						}
-					]
-				}
+				{ $subview:true }
 			]
 		};
 	}

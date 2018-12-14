@@ -8,7 +8,7 @@ export default class ToolView extends JetView {
 
 		return {
 			view:"toolbar",
-			css:theme.toolbar,
+			css:theme.toolbar + " webix_shadow_small",
 			height:56,
 			elements:[
 				{ width:4 },

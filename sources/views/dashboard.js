@@ -17,7 +17,7 @@ export default class DashboardView extends JetView{
 		};
 
 		return {
-			type:"wide",
+			type:"space",
 			cols:[
 				{
 					view:"scrollview",
