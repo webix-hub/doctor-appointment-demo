@@ -64,7 +64,7 @@ export default class PersonsView extends JetView {
 					view:"list",
 					localId:"list",
 					css:"persons_list",
-					width:280,
+					width:270,
 					select:true,
 					type:{
 						template:obj => `<image class="user_photo" src="data/photos/${obj.photo}_1.jpg" />

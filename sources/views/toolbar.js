@@ -21,17 +21,20 @@ export default class ToolView extends JetView {
 							margin:8,
 							cols:[
 								{
+									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" title=\"Change your personal settings\">",
+									width:40, borderless:true, css:"toolbar_photo",
+									onClick:{
+										"mainphoto":function(){
+											this.$scope.profileMenu.showMenu(this.$view);
+											return false;
+										}
+									}
+								},
+								{
 									view:"icon", icon:"mdi mdi-settings",
 									tooltip:"Open theme settings",
 									click:function(){
 										this.$scope.themeSettings.showPopup(this.$view);
-									}
-								},
-								{
-									view:"icon", icon:"mdi mdi-account",
-									tooltip:"Open profile options",
-									click:function(){
-										this.$scope.profileMenu.showMenu(this.$view);
 									}
 								}
 							]

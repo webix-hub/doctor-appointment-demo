@@ -5,7 +5,7 @@ export default class InformationView extends JetView {
 	config(){
 		const controls = {
 			margin:10,
-			minWidth:238,
+			//minWidth:238,
 			rows:[
 				{
 					view:"text", name:"fname",
@@ -66,7 +66,6 @@ export default class InformationView extends JetView {
 		return {
 			view:"form",
 			margin:20,
-			gravity:2,
 			cols:[
 				photo,
 				{

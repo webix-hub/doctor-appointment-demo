@@ -6,6 +6,18 @@ toolbar
 .logo{
 	background:url(webix-logo.svg) 2px 2px no-repeat;
 }
+.webix_view.toolbar_photo > div{
+	padding:0px;
+}
+.mainphoto{
+	border-radius:25px;
+	width:38px;
+	height:38px;
+	cursor:pointer;
+}
+.mainphoto:hover{
+	opacity:0.8;
+}
 /* list of patients */
 .user_photo, .doctor_photo, .friend_photo{
 	display:block;
