@@ -9,7 +9,7 @@ export default class RegistryView extends JetView {
 			minHeight:360,
 			rows:[
 				{
-					view:"toolbar", css:theme.toolbar, elements:[
+					view:"toolbar", css:theme, elements:[
 						{ view:"label", template:"Visits" }
 					]
 				},

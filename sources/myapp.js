@@ -16,7 +16,7 @@ export default class MyApp extends JetApp{
 			router 		: HashRouter,
 			debug 		: !PRODUCTION,
 			start 		: "/login",
-			theme		: theme || { toolbar:"", sidebar:"" }
+			theme		: theme || ""
 		};
 
 		super({ ...defaults, ...config });

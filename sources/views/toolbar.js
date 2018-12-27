@@ -8,7 +8,7 @@ export default class ToolView extends JetView {
 
 		return {
 			view:"toolbar",
-			css:theme.toolbar + " webix_shadow_small",
+			css:theme + " webix_shadow_small",
 			height:56,
 			elements:[
 				{ width:4 },
@@ -21,7 +21,7 @@ export default class ToolView extends JetView {
 							margin:8,
 							cols:[
 								{
-									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" title=\"Change your personal settings\">",
+									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" title=\"Open your profile\">",
 									width:40, borderless:true, css:"toolbar_photo",
 									onClick:{
 										"mainphoto":function(){

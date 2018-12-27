@@ -10,7 +10,7 @@ export default class ReviewsView extends JetView {
 			minHeight:300,
 			rows:[
 				{
-					view:"toolbar", css:theme.toolbar, elements:[
+					view:"toolbar", css:theme, elements:[
 						{ view:"label", template:"Reviews" },
 						{},
 						{

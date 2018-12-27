@@ -23,7 +23,7 @@ export default class ProfileView extends JetView {
 					{
 						rows:[
 							{
-								view:"toolbar", css:theme.toolbar,
+								view:"toolbar", css:theme,
 								paddingX:17, elements:[
 									{
 										view:"segmented", localId:"segmented",

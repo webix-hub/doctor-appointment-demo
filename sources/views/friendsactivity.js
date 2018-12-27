@@ -7,7 +7,7 @@ export default class FriendsActivityView extends JetView{
 
 		return {
 			rows:[
-				{ template:"Friends activity", height:46, css:"webix_header " + theme.toolbar },
+				{ template:"Friends activity", height:46, css:"webix_header " + theme },
 				{
 					view:"list",
 					localId:"friends",

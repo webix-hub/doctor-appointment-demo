@@ -9,7 +9,7 @@ export default class FriendsView extends JetView {
 		return {
 			rows:[
 				{
-					view:"toolbar", css:theme.toolbar, elements:[
+					view:"toolbar", css:theme, elements:[
 						{ view:"label", template:"Friends", localId:"header", width:110 },
 						{},
 						{
