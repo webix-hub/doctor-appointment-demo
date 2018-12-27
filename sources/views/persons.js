@@ -16,13 +16,21 @@ export default class PersonsView extends JetView {
 						{ view:"label", label:"Patients", batch:"default" },
 						{ width:4 },
 						{
-							view:"nstateicon", batch:"default",
-							states:["inpatients","outpatients","all patients"],
-							icons:["mdi mdi-all-inclusive","mdi mdi-hospital","mdi mdi-home"],
-							tooltip:true, tip:"Click to show",
+							view:"combo", batch:"default", width:140,
+							css:"patients_filter",
+							value:"0",
+							options:{
+								template:"Show #value#",
+								data:[
+									{ id:"1",value:"Inpatients" },
+									{ id:"2",value:"Outpatients" },
+									{ id:"0",value:"All patients" }
+								]
+							},
 							on:{
-								onStateChange:state => {
-									this.$$("list").filter("type",state);
+								onChange:newv => {
+									if (newv == "0") this.$$("list").filter();
+									else this.$$("list").filter("type",newv);
 								}
 							}
 						},
@@ -56,7 +64,7 @@ export default class PersonsView extends JetView {
 					view:"list",
 					localId:"list",
 					css:"persons_list",
-					width:250,
+					width:280,
 					select:true,
 					type:{
 						template:obj => `<image class="user_photo" src="data/photos/${obj.photo}_1.jpg" />

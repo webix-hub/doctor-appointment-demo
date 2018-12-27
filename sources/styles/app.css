@@ -8,7 +8,7 @@ toolbar
 }
 /* list of patients */
 .user_photo, .doctor_photo, .friend_photo{
-	display:inline-block;
+	display:block;
 	border-radius:25px;
 	width:48px;
 	height:48px;
@@ -37,6 +37,9 @@ toolbar
 	display:block;
 	letter-spacing:0.2px;
 	line-height:20px; 
+}
+.webix_el_combo.patients_filter input{
+	font-size:12px;
 }
 .persons_list .webix_list_item,
 .persons_list .webix_list_item.webix_selected{
@@ -170,21 +173,6 @@ toolbar
 	font-size:16px;
 	color:#475466;
 }
-/* friends activity */
-/* .friend_photo{
-	display:inline-block;
-	border-radius:50px;
-	float:left;
-}
-.event_details{
-	font-weight:500;
-	color:#1ca1c1;
-	cursor:pointer;
-}
-.activity_text{
-	position:relative;
-	top:12px;
-} */
 /* settings */
 .webix_label_right{
 	padding-left:10px;
