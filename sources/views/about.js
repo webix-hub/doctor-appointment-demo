@@ -16,8 +16,8 @@ export default class AboutView extends JetView {
 				},
 				{ view:"label", template:"Schedule", css:"about_label" },
 				{
-					view:"template", borderless:true,
-					css:"profile_templates", minHeight:52,
+					view:"template", localId:"schedule:template", borderless:true,
+					css:"profile_templates", height:48,
 					template:obj => {
 						let result = "";
 						if (obj.schedule)
@@ -101,5 +101,17 @@ export default class AboutView extends JetView {
 		templates.map(view => {
 			view.setValues(this._data);
 		});
+
+		this._resizeEvent = webix.event(window, "resize", () => {
+			const days = this.$$("schedule:template").$view.childNodes[0].childNodes.length;
+			if (this.getRoot().$width <= 480 && days > 2)
+				this.$$("schedule:template").config.height = 96;
+			else if (this.getRoot().$width > 480)
+				this.$$("schedule:template").config.height = 48;
+			this.$$("schedule:template").resize();
+		});
+	}
+	destroy(){
+		webix.eventRemove(this._resizeEvent);
 	}
 }
