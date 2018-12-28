@@ -19,7 +19,10 @@ export default class MainInfoView extends JetView {
 				{
 					cols:[
 						{},
-						{ view:"photo", width:150, height:150, name:"photo", css:"profile_photo" },
+						{
+							view:"photo", width:150, height:150, name:"photo",
+							css:"profile_photo"
+						},
 						{}
 					]
 				},

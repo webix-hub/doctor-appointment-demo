@@ -48,7 +48,7 @@ export default class FriendsView extends JetView {
 					view:"list", localId:"list",
 					css:"persons_list",
 					select:true,
-					width:300, autoheight:true,
+					width:260, autoheight:true,
 					type:{
 						height:65,
 						width:"auto",

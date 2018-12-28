@@ -11,7 +11,7 @@ export default class SettingsView extends JetView {
 		}
 
 		return {
-			view:"form", minWidth:560,
+			view:"form",
 			elements:[
 				{
 					rows:[
