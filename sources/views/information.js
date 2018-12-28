@@ -5,7 +5,6 @@ export default class InformationView extends JetView {
 	config(){
 		const controls = {
 			margin:10,
-			//minWidth:238,
 			rows:[
 				{
 					view:"text", name:"fname",
@@ -26,16 +25,7 @@ export default class InformationView extends JetView {
 					view:"text", name:"email",
 					label:"Email", labelPosition:"top",
 					placeholder:"judetheawesome@obscure.com"
-				},
-				{
-					view:"radio", name:"type",
-					value:1,
-					options:[
-						{ id:1, value:"Inpatient" },
-						{ id:2, value:"Outpatient" }
-					]
-				},
-				{ height:20 }
+				}
 			]
 		};
 
@@ -63,18 +53,48 @@ export default class InformationView extends JetView {
 			]
 		};
 
+		const radio = {
+			view:"radio", name:"type",
+			value:1, vertical:true,
+			options:[
+				{ id:1, value:"Inpatient" },
+				{ id:2, value:"Outpatient" }
+			]
+		};
+
+		const wideConfig = [
+			photo,
+			{
+				rows:[
+					controls,
+					radio,
+					{ height:20 },
+					buttons
+				]
+			}
+		];
+		const narrowConfig = [
+			{
+				rows:[
+					photo,
+					{ height:20 },
+					radio
+				]
+			},
+			{
+				rows:[
+					controls,
+					{ height:20 },
+					buttons
+				]
+			}
+		];
+
 		return {
 			view:"form",
 			margin:20,
-			cols:[
-				photo,
-				{
-					rows:[
-						controls,
-						buttons
-					]
-				}
-			],
+			//cols:this.app.config.screen === "wide" ? wideConfig : narrowConfig,
+			cols:wideConfig,
 			rules:{
 				"fname":webix.rules.isNotEmpty
 			}
