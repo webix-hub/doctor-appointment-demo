@@ -1,5 +1,6 @@
 webix.protoUI({
 	name:"nstateicon",
+	$cssName:"icon",
 	defaults:{
 		tooltip:false
 	},

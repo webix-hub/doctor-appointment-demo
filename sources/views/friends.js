@@ -1,5 +1,5 @@
-import {JetView} from "webix-jet";
-import {getFriends} from "models/friends";
+import { JetView } from "webix-jet";
+import { getFriends } from "models/friends";
 import "webix/nstateicon";
 
 export default class FriendsView extends JetView {
