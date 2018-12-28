@@ -73,10 +73,26 @@ export default class LoginView extends JetView{
 									labelWidth:30, placeholder:"Username"
 								},
 								{
-									view:"text", type:"password",
+									view:"search", type:"password",
 									localId:"pswd", name:"password",
+									icon:"wxi-eye",
 									label:"<span class=\"webix_icon mdi mdi-lock\">",
-									labelWidth:30, placeholder:"Password"
+									labelWidth:30, placeholder:"Password",
+									on:{
+										onSearchIconClick: function(){
+											var theInput = this.config.type;
+	
+											if (theInput !== "password") {
+												this.config.icon = "wxi-eye";
+												this.config.type = "password";
+											}
+											else if (theInput === "password") {
+												this.config.icon = "wxi-eye-slash";
+												this.config.type = "";
+											}
+											this.refresh();
+										}
+									}
 								},
 								buttons
 							],
