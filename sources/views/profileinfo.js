@@ -10,25 +10,25 @@ export default class ProfileInfoView extends JetView {
 					view:"toolbar", borderless:true, elements:[
 						{ view:"label", template:"Personal info", css:"about_label" },
 						{},
-						this.editButtons(),
+						this.editButtons("top"),
 						{
 							view:"icon", icon:"mdi mdi-pencil",
 							localId:"edit:icon", 
-							click:function(){
-								this.$scope.$$("edit:btns").show();
-								this.$scope.show("profileedit");
-								this.hide();
+							click:() => {
+								this.show("profileedit");
+								this.showButtons();
 							}
 						}
 					]
 				},
-				{ $subview:true }
+				{ $subview:true },
+				this.editButtons("bottom")
 			]
 		};
 	}
-	editButtons(){
+	editButtons(pos){
 		return {
-			hidden:true, localId:"edit:btns",
+			hidden:true, localId:"edit:btns:"+pos,
 			margin:5, cols:[
 				{},
 				{
@@ -47,7 +47,17 @@ export default class ProfileInfoView extends JetView {
 	}
 	endEdit(){
 		this.$$("edit:icon").show();
-		this.$$("edit:btns").hide();
+		this.$$("edit:btns:top").hide();
+		this.$$("edit:btns:bottom").hide();
 		this.show("about");
+	}
+	showButtons(){
+		this.$$("edit:btns:top").show();
+		this.$$("edit:btns:bottom").show();
+		this.$$("edit:icon").hide();
+	}
+	init(){
+		if (this.getUrl()[1].page === "profileedit")
+			this.showButtons(this.$$("edit:icon"));
 	}
 }

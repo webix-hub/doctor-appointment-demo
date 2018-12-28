@@ -8,13 +8,13 @@ const options = [
 webix.protoUI({
 	name:"multitime",
 	defaults:{
-		borderless:true,
+		borderless:true, padding:0,
 		rows:[
 			{
-				margin:10, cols:[
+				margin:4, cols:[
 					{ view:"text", label:"Day(s)", labelWidth:50, name:"day0" },
 					{
-						view:"combo", name:"time0", label:"Time", labelWidth:50,
+						view:"combo", name:"time0", label:"Time", labelWidth:45,
 						options:options
 					},
 					{
@@ -30,10 +30,10 @@ webix.protoUI({
 	},
 	addInput:function(view){
 		const newSec = view.addView({
-			margin:10, cols:[
-				{ view:"text", label:"Day", labelWidth:50, name:"day" + view.getChildViews().length },
+			margin:4, cols:[
+				{ view:"text", label:"Day(s)", labelWidth:50, name:"day" + view.getChildViews().length },
 				{
-					view:"combo", label:"Time", labelWidth:50,
+					view:"combo", label:"Time", labelWidth:45,
 					name:"time" + view.getChildViews().length,
 					options:options
 				}, 

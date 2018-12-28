@@ -1,12 +1,12 @@
 webix.protoUI({
 	name:"multidate",
 	defaults:{
-		borderless:true,
+		borderless:true, padding:0,
 		rows:[
 			{
-				margin:10, cols:[
-					{ view:"text", label:"Step", labelWidth:50, name:"step0" },
-					{ view:"daterangepicker", name:"time0", label:"When", labelWidth:50 },
+				margin:4, cols:[
+					{ view:"text", label:"Step", labelWidth:45, name:"step0" },
+					{ view:"daterangepicker", name:"time0", label:"When", labelWidth:45 },
 					{
 						view:"icon", icon:"mdi mdi-plus-circle",
 						click:function(){
@@ -21,10 +21,10 @@ webix.protoUI({
 	_extraInputs:[],
 	addInput:function(view){
 		const newSec = view.addView({
-			margin:10, cols:[
-				{ view:"text", label:"Step", labelWidth:50, name:"step" + view.getChildViews().length },
+			margin:4, cols:[
+				{ view:"text", label:"Step", labelWidth:45, name:"step" + view.getChildViews().length },
 				{
-					view:"daterangepicker", label:"When", labelWidth:50,
+					view:"daterangepicker", label:"When", labelWidth:45,
 					name:"time" + view.getChildViews().length
 				}, 
 				{

@@ -52,6 +52,7 @@ toolbar
 }
 .webix_el_combo.patients_filter input{
 	font-size:12px;
+	border:0px;
 }
 .persons_list .webix_list_item,
 .persons_list .webix_list_item.webix_selected{
