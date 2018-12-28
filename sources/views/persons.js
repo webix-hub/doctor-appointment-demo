@@ -5,6 +5,7 @@ import "webix/nstateicon";
 export default class PersonsView extends JetView {
 	config(){
 		const theme = this.app.config.theme;
+		const size = this.app.config.size;
 
 		return {
 			rows:[
@@ -16,11 +17,17 @@ export default class PersonsView extends JetView {
 						{ view:"label", label:"Patients", batch:"default" },
 						{ width:4 },
 						{
-							view:"combo", batch:"default", width:140,
+							view:"combo", batch:"default",
+							width:size !== "small" ? 140 : 100,
 							css:"patients_filter",
 							value:"0",
 							options:{
-								template:"Show #value#",
+								template:obj => {
+									if (size !== "small")
+										return `Show ${obj.value}`;
+									else
+										return `Show ${obj.value.slice(0,3)}`;
+								},
 								data:[
 									{ id:"1",value:"Inpatients" },
 									{ id:"2",value:"Outpatients" },
@@ -64,12 +71,12 @@ export default class PersonsView extends JetView {
 					view:"list",
 					localId:"list",
 					css:"persons_list",
-					width:270,
+					//width:size !== "small" ? 270 : 240,
 					select:true,
 					type:{
 						template:obj => `<image class="user_photo" src="data/photos/${obj.photo}_1.jpg" />
 							<div class="text">
-						  		<span class="username">${obj.fname} ${obj.lname}</span>
+						  		<span class="username">${obj.name}</span>
 						  		<span class="patient">${(obj.type === 1) ? "Inpatient" : "Outpatient"}</span>
 							</div>`,
 						height:66

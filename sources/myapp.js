@@ -13,7 +13,7 @@ export default class MyApp extends JetApp{
 
 		const size = () => {
 			const screen = document.body.offsetWidth;
-			return screen > 1400 ? "wide" : "small";
+			return screen > 1400 ? "wide" : ( screen > 1100 ? "mid" : "small");
 		};
 
 		const defaults = {

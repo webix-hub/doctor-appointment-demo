@@ -33,9 +33,8 @@ export default class RegistryView extends JetView {
 							sort:"date", format:webix.Date.dateToStr("%j %F")
 						},
 						{
-							id:"", header:"Name", sort:"text",
-							fillspace:2,
-							template:data => data.fname + " " + data.lname
+							id:"name", header:"Name", sort:"text",
+							fillspace:2
 						},
 						{ id:"email", header:"Email", sort:"text", fillspace:2 },
 						{ id:"diagnosis", header:"Diagnosis", sort:"text", fillspace:2 },

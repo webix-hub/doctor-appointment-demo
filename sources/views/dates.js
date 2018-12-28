@@ -1,12 +1,13 @@
 import {JetView} from "webix-jet";
 export default class DatesView extends JetView{
 	config(){
+		const size = this.app.config.size;
 		const start = new Date();
 		start.setDate(start.getDate() - 3);
 
 		return {
 			view:"calendar",
-			width:250,
+			width:size !== "small" ? 270 : 240,
 			icons:true,
 			maxDate:new Date(),
 			minDate:start,

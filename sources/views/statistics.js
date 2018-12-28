@@ -3,6 +3,8 @@ import {getStatistics} from "models/statistics";
 
 export default class StatisticsView extends JetView {
 	config(){
+		const size = this.app.config.size;
+
 		return {
 			type:"clean",
 			rows:[
@@ -12,7 +14,15 @@ export default class StatisticsView extends JetView {
 					view:"chart",
 					type:"bar",
 					barWidth:20,
-					xAxis:{ template:"#system#", lines:false },
+					xAxis:{
+						lines:false,
+						template:obj => {
+							if (size !== "small")
+								return obj.system;
+							else
+								return `<span title="${obj.system} system">${obj.system.slice(0,3)}</span>`;
+						}
+					},
 					yAxis:{ start:0, step:15, end:90, color:"#fff" },
 					legend:{
 						values:[

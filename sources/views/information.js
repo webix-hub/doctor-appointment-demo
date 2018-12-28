@@ -3,18 +3,15 @@ import "webix/photo";
 
 export default class InformationView extends JetView {
 	config(){
+		const size = this.app.config.size;
+
 		const controls = {
 			margin:10,
 			rows:[
 				{
-					view:"text", name:"fname",
-					label:"First name", labelPosition:"top",
-					placeholder:"First name"
-				},
-				{
-					view:"text", name:"lname",
-					label:"Last name", labelPosition:"top",
-					placeholder:"Last name"
+					view:"text", name:"name",
+					label:"Name", labelPosition:"top",
+					placeholder:"Patient's name"
 				},
 				{
 					view:"datepicker", name:"birthday",
@@ -29,11 +26,22 @@ export default class InformationView extends JetView {
 			]
 		};
 
+		const radio = {
+			view:"radio", name:"type", value:1,
+			vertical:size !== "wide",
+			options:[
+				{ id:1, value:"Inpatient" },
+				{ id:2, value:"Outpatient" }
+			]
+		};
+
 		const photo = {
 			view:"photo",
 			name:"photo",
 			css:"form_photo",
-			borderless:true
+			borderless:true,
+			width:size === "small" ? 130 : 260,
+			height:size === "small" ? 130 : 260
 		};
 
 		const buttons = {
@@ -53,27 +61,7 @@ export default class InformationView extends JetView {
 			]
 		};
 
-		const radio = {
-			view:"radio", name:"type",
-			value:1, vertical:true,
-			options:[
-				{ id:1, value:"Inpatient" },
-				{ id:2, value:"Outpatient" }
-			]
-		};
-
-		const wideConfig = [
-			photo,
-			{
-				rows:[
-					controls,
-					radio,
-					{ height:20 },
-					buttons
-				]
-			}
-		];
-		const narrowConfig = [
+		const narrowConf = [
 			{
 				rows:[
 					photo,
@@ -90,11 +78,22 @@ export default class InformationView extends JetView {
 			}
 		];
 
+		const wideConf = [
+			photo,
+			{
+				rows:[
+					controls,
+					radio,
+					{ height:20 },
+					buttons
+				]
+			}
+		];
+
 		return {
 			view:"form",
-			margin:20,
-			//cols:this.app.config.screen === "wide" ? wideConfig : narrowConfig,
-			cols:wideConfig,
+			margin:20, minWidth:260,
+			cols:size !== "small" ? wideConf : narrowConf,
 			rules:{
 				"fname":webix.rules.isNotEmpty
 			}
