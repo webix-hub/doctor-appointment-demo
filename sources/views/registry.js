@@ -18,10 +18,10 @@ export default class RegistryView extends JetView {
 					localId:"grid",
 					select:true,
 					columns:[
-						{ id:"id", header:"#", width:30, sort:"int" },
+						{ id:"id", header:"", width:30, sort:"int" },
 						{
 							id:"type", header:"", sort:"int",
-							width:40,
+							width:34,
 							template:data => {
 								let type = (data.type === 1) ? "gold" : "grey";
 								return `<span class='webix_icon mdi mdi-star ${type}'></span>`;

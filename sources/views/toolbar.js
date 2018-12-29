@@ -23,6 +23,7 @@ export default class ToolView extends JetView {
 								{
 									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" title=\"Open your profile\">",
 									width:40, borderless:true, css:"toolbar_photo",
+									localId:"user:avatar",
 									onClick:{
 										"mainphoto":function(){
 											this.$scope.profileMenu.showMenu(this.$view);
@@ -48,5 +49,15 @@ export default class ToolView extends JetView {
 	init(){
 		this.profileMenu = this.ui(ProfileMenuView);
 		this.themeSettings = this.ui(ThemeSettingsView);
+
+		this.tip = webix.ui({
+			view:"tooltip",
+			template:"#value#"
+		});
+		const pos = webix.html.offset(this.$$("user:avatar").$view);
+
+		webix.delay(() => this.tip.show({
+			value:"Click the user avatar to open the profile"
+		},{ x:pos.x, y:pos.y+10 }),null,null,1000);
 	}
 }

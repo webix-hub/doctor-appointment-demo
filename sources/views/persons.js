@@ -17,8 +17,8 @@ export default class PersonsView extends JetView {
 						{ view:"label", label:"Patients", batch:"default" },
 						{ width:4 },
 						{
-							view:"combo", batch:"default",
-							width:size !== "small" ? 140 : 100,
+							view:"richselect", batch:"default",
+							width:size !== "small" ? 142 : 100,
 							css:"patients_filter",
 							value:"0",
 							options:{
@@ -71,7 +71,6 @@ export default class PersonsView extends JetView {
 					view:"list",
 					localId:"list",
 					css:"persons_list",
-					//width:size !== "small" ? 270 : 240,
 					select:true,
 					type:{
 						template:obj => `<image class="user_photo" src="data/photos/${obj.photo}_1.jpg" />

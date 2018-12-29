@@ -10,10 +10,9 @@ export default class StatisticsView extends JetView {
 			rows:[
 				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
 				{
-					localId:"chart",
-					view:"chart",
-					type:"bar",
-					barWidth:20,
+					localId:"chart", view:"chart",
+					type:"bar", barWidth:20,
+					css:"patients_chart",
 					xAxis:{
 						lines:false,
 						template:obj => {

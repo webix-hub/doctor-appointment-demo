@@ -95,7 +95,7 @@ export default class InformationView extends JetView {
 			margin:20, minWidth:260,
 			cols:size !== "small" ? wideConf : narrowConf,
 			rules:{
-				"fname":webix.rules.isNotEmpty
+				"name":webix.rules.isNotEmpty
 			}
 		};
 	}

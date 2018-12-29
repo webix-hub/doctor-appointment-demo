@@ -7,7 +7,7 @@ export default class DatesView extends JetView{
 
 		return {
 			view:"calendar",
-			width:size !== "small" ? 270 : 240,
+			width:size !== "small" ? 271 : 240,
 			icons:true,
 			maxDate:new Date(),
 			minDate:start,

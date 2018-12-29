@@ -1,4 +1,4 @@
-toolbar
+/* toolbar */
 .toolbar_button button{
 	padding:0;
 	text-align:center;
@@ -50,7 +50,7 @@ toolbar
 	letter-spacing:0.2px;
 	line-height:20px; 
 }
-.webix_el_combo.patients_filter input{
+.webix_el_richselect.patients_filter .webix_el_box .webix_inp_static{
 	font-size:12px;
 	border:0px;
 }
@@ -76,9 +76,20 @@ toolbar
 	display:block;
 	color:#475466;
 }
+/* chart */
+.webix_chart.patients_chart .webix_chart_legend_item{
+	cursor:pointer;
+}
+.webix_chart.patients_chart > div map area{
+	cursor:default !important;
+}
 /* form */
 .webix_view.form_photo > div{
 	padding:6px 0px 0px 0px;
+}
+/* calendar */
+.webix_cal_day.webix_cal_day_disabled{
+	cursor:not-allowed;
 }
 /* headers (templates) */
 .webix_view.chart_header{
