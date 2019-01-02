@@ -50,7 +50,7 @@ export default class ProfileEditView extends JetView {
 		this._data = getProfileData();
 		form.setValues(this._data);
 
-		this.on(this.app,"before:save:form:data",() => {
+		this.on(this.app,"save:form:data",() => {
 			if (form.validate()){
 				const formData = form.getValues();
 				formData["skills"] = formData["skills"].split(",");

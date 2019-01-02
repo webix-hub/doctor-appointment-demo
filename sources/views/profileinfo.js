@@ -38,7 +38,7 @@ export default class ProfileInfoView extends JetView {
 				{
 					view:"button", value:"Save", type:"form", width:100,
 					click:() => {
-						this.app.callEvent("before:save:form:data");
+						this.app.callEvent("save:form:data");
 					}
 				}
 			]
