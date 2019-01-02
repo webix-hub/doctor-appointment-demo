@@ -6,7 +6,7 @@ import "webix/multitime";
 export default class ProfileEditView extends JetView {
 	config(){
 		function isEmail(value){
-			return !value || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))+@[^@\s]+\.[^2\s]+$/.test(value);
+			return !value || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[^@\s]+\.[^2\s]+$/.test(value);
 		}
 
 		return {
