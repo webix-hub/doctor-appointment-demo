@@ -5,7 +5,7 @@ export default class InformationView extends JetView {
 	config(){
 		const size = this.app.config.size;
 		function isEmail(value){
-			return !value || /\S+@[^@\s]+\.[^2\s]+$/.test(value);
+			return !value || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[^@\s]+\.[^2\s]+$/.test(value);
 		}
 
 		const controls = {
