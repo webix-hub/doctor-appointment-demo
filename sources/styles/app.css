@@ -6,6 +6,9 @@
 .logo{
 	background:url(webix-logo.svg) 2px 2px no-repeat;
 }
+.logo_inverted{
+	background:url(webix-logo-inv.svg) 2px 2px no-repeat;
+}
 .webix_view.toolbar_photo > div{
 	padding:0px;
 }

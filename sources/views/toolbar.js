@@ -12,7 +12,7 @@ export default class ToolView extends JetView {
 			height:56,
 			elements:[
 				{ width:4 },
-				{ css:"logo" },
+				{ css:theme ? "logo_inverted" : "logo" },
 				{},
 				{
 					paddingY:7,
