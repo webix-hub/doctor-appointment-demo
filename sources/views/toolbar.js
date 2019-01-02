@@ -50,14 +50,16 @@ export default class ToolView extends JetView {
 		this.profileMenu = this.ui(ProfileMenuView);
 		this.themeSettings = this.ui(ThemeSettingsView);
 
-		this.tip = webix.ui({
-			view:"tooltip",
-			template:"#value#"
-		});
-		const pos = webix.html.offset(this.$$("user:avatar").$view);
+		if (this.getUrl()[1].page !== "profile"){
+			this.tip = webix.ui({
+				view:"tooltip",
+				template:"#value#"
+			});
+			const pos = webix.html.offset(this.$$("user:avatar").$view);
 
-		webix.delay(() => this.tip.show({
-			value:"Click the user avatar to open the profile"
-		},{ x:pos.x, y:pos.y+10 }),null,null,1000);
+			webix.delay(() => this.tip.show({
+				value:"Click the user avatar to open the profile"
+			},{ x:pos.x, y:pos.y+10 }),null,null,1000);
+		}
 	}
 }
