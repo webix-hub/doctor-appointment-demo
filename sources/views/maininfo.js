@@ -53,6 +53,7 @@ export default class MainInfoView extends JetView {
 		const form = this.getRoot();
 		const data = getProfileData();
 		form.setValues(data);
+
 		const icons = form.queryView({ view:"icon" },"all");
 		for (let i = 0; i < icons.length; i++){
 			if (!data[icons[i].config.type])

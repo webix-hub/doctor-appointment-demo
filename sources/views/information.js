@@ -4,12 +4,15 @@ import "webix/photo";
 export default class InformationView extends JetView {
 	config(){
 		const size = this.app.config.size;
+		function isEmail(value){
+			return !value || /\S+@[^@\s]+\.[^2\s]+$/.test(value);
+		}
 
 		const controls = {
 			margin:10,
 			rows:[
 				{
-					view:"text", name:"name",
+					view:"text", name:"name", validate:webix.rules.isNotEmpty,
 					label:"Name", labelPosition:"top",
 					placeholder:"Patient's name"
 				},
@@ -19,7 +22,7 @@ export default class InformationView extends JetView {
 					placeholder:"Click to select"
 				},
 				{
-					view:"text", name:"email",
+					view:"text", name:"email", validate:isEmail,
 					label:"Email", labelPosition:"top",
 					placeholder:"judetheawesome@obscure.com"
 				}
@@ -93,10 +96,7 @@ export default class InformationView extends JetView {
 		return {
 			view:"form",
 			margin:20, minWidth:260,
-			cols:size !== "small" ? wideConf : narrowConf,
-			rules:{
-				"name":webix.rules.isNotEmpty
-			}
+			cols:size !== "small" ? wideConf : narrowConf
 		};
 	}
 	init(form){

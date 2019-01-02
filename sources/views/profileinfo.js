@@ -38,8 +38,7 @@ export default class ProfileInfoView extends JetView {
 				{
 					view:"button", value:"Save", type:"form", width:100,
 					click:() => {
-						this.app.callEvent("save:form:data");
-						this.endEdit();
+						this.app.callEvent("before:save:form:data");
 					}
 				}
 			]
@@ -50,6 +49,7 @@ export default class ProfileInfoView extends JetView {
 		this.$$("edit:btns:top").hide();
 		this.$$("edit:btns:bottom").hide();
 		this.show("about");
+		webix.delay(() => this.app.refresh());
 	}
 	showButtons(){
 		this.$$("edit:btns:top").show();

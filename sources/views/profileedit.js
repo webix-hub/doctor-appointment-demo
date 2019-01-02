@@ -32,7 +32,7 @@ export default class ProfileEditView extends JetView {
 					// outer layout for multiline control
 					rows:[
 						{ view:"label", label:"Qualification" },
-						{ view:"multidate", name:"qualification" /*label:"Qualification"*/ }
+						{ view:"multidate", name:"qualification" }
 					]
 				},
 				{
@@ -46,17 +46,22 @@ export default class ProfileEditView extends JetView {
 		};
 	}
 	init(){
+		const form = this.getRoot();
 		this._data = getProfileData();
-		this.getRoot().setValues(this._data);
+		form.setValues(this._data);
 
-		this.on(this.app,"save:form:data",() => {
-			const formData = this.getRoot().getValues();
-			formData["skills"] = formData["skills"].split(",");
-			try{
-				webix.storage.session.put("demo_profile_data",formData);
-			}
-			catch(err){
-				webix.message("You blocked cookies. Data won't be saved.");
+		this.on(this.app,"before:save:form:data",() => {
+			if (form.validate()){
+				const formData = form.getValues();
+				formData["skills"] = formData["skills"].split(",");
+				try{
+					webix.storage.session.put("demo_profile_data",formData);
+				}
+				catch(err){
+					webix.message("You blocked cookies. Data won't be saved.");
+				}
+				this.getParentView().endEdit();
+				webix.message("Saved","success");
 			}
 		});
 	}
