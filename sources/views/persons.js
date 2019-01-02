@@ -47,8 +47,7 @@ export default class PersonsView extends JetView {
 								onTimedKeyPress(){
 									const input = this.getValue().toLowerCase();
 									this.$scope.$$("list").filter(obj => {
-										const name = obj.fname + " " + obj.lname;
-										return name.toLowerCase().indexOf(input) !== -1;
+										return obj.name.toLowerCase().indexOf(input) !== -1;
 									});
 								}
 							}
