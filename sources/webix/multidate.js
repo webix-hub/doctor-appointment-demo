@@ -31,7 +31,7 @@ webix.protoUI({
 					view:"icon", icon:"mdi mdi-minus-circle", 
 					click:function(){
 						var toRemove = this.getParentView();
-						view.removeView(toRemove);
+						view.removeInput(toRemove);
 					}
 				}
 			]
