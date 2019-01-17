@@ -1,62 +1,80 @@
 webix.protoUI({
 	name:"multidate",
-	defaults:{
-		borderless:true, padding:0,
-		rows:[
-			{
-				margin:4, cols:[
-					{ view:"text", label:"Step", labelWidth:45, name:"step0" },
-					{ view:"daterangepicker", name:"time0", label:"When", labelWidth:45 },
-					{
-						view:"icon", icon:"mdi mdi-plus-circle",
-						click:function(){
-							var parent = this.getParentView().getParentView();
-							parent.addInput(parent);
-						}
-					}
-				]
-			}
-		]
+	$init:function(config){
+		config.body = {
+			margin:5, rows:[this._getForm("plus")]
+		};
+	
+		this.$ready.push(() => {
+			this._inputs = [this.queryView("form").config.id];
+		});  
 	},
-	_extraInputs:[],
-	addInput:function(view){
-		const newSec = view.addView({
-			margin:4, cols:[
-				{ view:"text", label:"Step", labelWidth:45, name:"step" + view.getChildViews().length },
+	_getForm:function(mode){
+		const id = webix.uid();
+		return {
+			view:"form", id:id, borderless:true, padding:0,
+			cols:[
+				{ view:"text", label:"Step", labelWidth:50, name:"step" },
+				{ view:"daterangepicker", stringResult:true, name:"time", label:"When", labelWidth:50 }, 
 				{
-					view:"daterangepicker", label:"When", labelWidth:45,
-					name:"time" + view.getChildViews().length
-				}, 
-				{
-					view:"icon", icon:"mdi mdi-minus-circle", 
-					click:function(){
-						var toRemove = this.getParentView();
-						view.removeInput(toRemove);
+					view:"icon", icon:"wxi-"+mode+"-circle", 
+					click:() => { 
+						if (mode == "plus") this.addInput(); 
+						else  this.removeInput(id);
 					}
 				}
 			]
-		});
-		this._extraInputs.push(newSec);
+		}
 	},
-	removeInput:function(section){
-		this.removeView(section);
+	addInput:function(){
+		const section = this.getBody().addView(this._getForm("minus"));
+		this._inputs.push(section);
+	},
+	removeInput:function(id){
+		for (var i = 0; i < this._inputs.length; i++){
+			if (this._inputs[i] == id){
+				this._inputs.splice(i, 1);
+				break;
+			}
+		}
+		this.getBody().removeView(id);
 	},
 	setValue(value){
-		const dataLines = Object.keys(value).length / 2;
+		const dataLines = value.length; 
 		const inputs = this.getChildViews().length;
-		const delta = dataLines - inputs;
-
-		if (delta > 0)
+		const delta = dataLines - inputs;  
+	
+		if (delta > 0){
 			for (let i = 0; i < delta; i++)
 				this.addInput(this);
-		else if (delta < 0)
+		}
+		else if (delta < 0){
 			for (let i = 1; i <= (-1)*delta; i++){
-				this.removeInput(this._extraInputs[inputs-i-1]);
+				this.removeInput(inputs-i-1);
 			}
-
-		this.setValues(value);
+		}
+	
+		this._inputs.forEach((view, i) => {
+			$$(view).setValues(value[i]);
+		});
 	},
 	getValue(){
-		return this.getValues();
+		let values = [];
+		this._inputs.forEach((view) => {
+			const vs = $$(view).getValues();
+			//if (vs["step"] || (vs["time"].start && vs["time"].end))
+			if (!this._isEmpty(vs))
+				values.push(vs);
+		});
+		return values;
+	},
+	_isEmpty(obj){
+		for (let i in obj){
+			if (typeof obj[i] === "object")
+				return this._isEmpty(obj[i]);
+			else
+				if (obj[i]) return false;
+		}
+		return true;
 	}
-}, webix.ui.form);
+}, webix.ui.forminput);

@@ -16,32 +16,20 @@ export default class ProfileEditView extends JetView {
 					validate:webix.rules.isNotEmpty
 				},
 				{ view:"textarea", name:"about", height:160, label:"About", labelPosition:"top" },
-				{
-					// outer layout for multiline control
-					rows:[
-						{ view:"label", label:"Schedule" },
-						{ view:"multitime", name:"schedule" }
-					]
-				},
+				{ label:"Schedule", labelPosition:"top", view:"multitime", name:"schedule" },
 				{ view:"label", label:"Contact Info" },
 				{ view:"text", label:"Email", name:"email", labelWidth:75, validate:isEmail },
 				{ view:"text", label:"Phone", name:"phone", labelWidth:75, pattern:webix.patterns.phone },
 				{ view:"text", label:"Address", name:"address", labelWidth:75 },
-				{ view:"textarea", name:"hobbies", height:100, label:"Hobbies", labelPosition:"top" },
 				{
 					// outer layout for multiline control
 					rows:[
-						{ view:"label", label:"Qualification" },
-						{ view:"multidate", name:"qualification" }
-					]
-				},
-				{
-					// outer layout for multiline control
-					rows:[
-						{ view:"label", label:"Skills" },
+						{ view:"label", label:"Skills"},
 						{ view:"multitext", separator:",", name:"skills" }
 					]
-				}
+				},
+				{ label:"Qualification", labelPosition:"top", view:"multidate", name:"qualification"},
+				{ view:"textarea", name:"hobbies", height:100, label:"Hobbies", labelPosition:"top" }
 			]
 		};
 	}

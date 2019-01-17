@@ -21,11 +21,9 @@ export default class AboutView extends JetView {
 					template:obj => {
 						let result = "";
 						if (obj.schedule)
-							for (let key in obj.schedule){
-								if (key.indexOf("day") !== -1)
-									result += `<div class="schedule"><div class="days">${obj.schedule[key]}</div>`;
-								else if (key.indexOf("time") !== -1)
-									result += `<div class="time">${obj.schedule[key]}</div></div>`;
+							for (let i = 0; i < obj.schedule.length; i++){
+								result += `<div class="schedule"><div class="days">${obj.schedule[i].day}</div>`;
+								result += `<div class="time">${obj.schedule[i].time}</div></div>`;
 							}
 						return result;
 					}
@@ -65,23 +63,17 @@ export default class AboutView extends JetView {
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
 					template:obj => {
+						let result = "<div class=\"qualification\">";
 						if (obj.qualification){
-							let result = "<div class=\"qualification\">";
-							for (let key in obj.qualification){
-
-								if (key.indexOf("step") !== -1)	
-									result += `<div class="qualification_step">
-										<span class="place">${obj.qualification[key]}</span>`;
-								else if (key.indexOf("time") !== -1){
-									const startDate = dateFormat(obj.qualification[key].start) || "unknown";
-									const endDate = dateFormat(obj.qualification[key].end) || "Present";
-
-									result += ` - <span>${startDate} - ${endDate}</span></div>`;
-								}
-
+							for (let i = 0; i < obj.qualification.length; i++){
+								result += `<div class="qualification_step">
+										<span class="place">${obj.qualification[i].step}</span>`;
+								const startDate = dateFormat(obj.qualification[i].time.start) || "unknown";
+								const endDate = dateFormat(obj.qualification[i].time.end) || "Present";
+								result += ` - <span>${startDate} - ${endDate}</span></div>`;
 							}
-							return result + "</div>";
 						}
+						return result + "</div>";
 					}
 				},
 				{ view:"label", template:"Hobbies", css:"about_label" },

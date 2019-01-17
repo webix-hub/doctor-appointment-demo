@@ -4,48 +4,32 @@ const options = [
 	"14:00 PM - 18:00 PM",
 	"15:00 PM - 19:00 PM"
 ];
-
+const days = [
+	"Monday","Tuesday","Wednesday","Thursday","Friday"
+];
 webix.protoUI({
 	name:"multitime",
-	defaults:{
-		borderless:true, padding:0,
-		rows:[
-			{
-				margin:4, cols:[
-					{ view:"text", label:"Day(s)", labelWidth:50, name:"day0" },
-					{
-						view:"combo", name:"time0", label:"Time", labelWidth:45,
-						options:options
-					},
-					{
-						view:"icon", icon:"mdi mdi-plus-circle",
-						click:function(){
-							var parent = this.getParentView().getParentView();
-							parent.addInput(parent);
-						}
-					}
-				]
-			}
-		]
-	},
-	addInput:function(view){
-		const newSec = view.addView({
-			margin:4, cols:[
-				{ view:"text", label:"Day(s)", labelWidth:50, name:"day" + view.getChildViews().length },
+	_getForm(mode){
+		const id = webix.uid();
+		return {
+			view:"form", id:id, borderless:true, padding:0, margin:10,
+			cols:[
 				{
-					view:"combo", label:"Time", labelWidth:45,
-					name:"time" + view.getChildViews().length,
+					view:"multiselect", label:"Day(s)", labelWidth:50, name:"day",
+					options:webix.copy(days)
+				},
+				{
+					view:"richselect", name:"time", label:"Time", labelWidth:50,
 					options:options
-				}, 
+				},
 				{
-					view:"icon", icon:"mdi mdi-minus-circle", 
-					click:function(){
-						var toRemove = this.getParentView();
-						view.removeInput(toRemove);
+					view:"icon", icon:"wxi-"+mode+"-circle",
+					click:() => {
+						if (mode == "plus") this.addInput();
+						else this.removeInput(id);
 					}
 				}
 			]
-		});
-		this._extraInputs.push(newSec);
+		};
 	}
 }, webix.ui.multidate);
