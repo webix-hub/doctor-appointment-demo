@@ -3,11 +3,9 @@ import {getStatistics} from "models/statistics";
 
 export default class StatisticsView extends JetView {
 	config(){
-		const size = this.app.config.size;
-
 		return {
-			css:"dashboard_panel",
-			type:"clean",
+			css:this.app.config.shadows,
+			type:"clean", minWidth:196,
 			rows:[
 				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
 				{
@@ -17,7 +15,7 @@ export default class StatisticsView extends JetView {
 					xAxis:{
 						lines:false,
 						template:obj => {
-							if (size !== "small")
+							if (this.app.config.size !== "small")
 								return obj.system;
 							else
 								return `<span title="${obj.system} system">${obj.system.slice(0,3)}</span>`;

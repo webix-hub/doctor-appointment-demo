@@ -13,7 +13,6 @@ export default class DashboardView extends JetView{
 		};
 
 		return {
-			//type:"space", margin:0, padding:5,
 			cols:[
 				{
 					view:"scrollview", borderless:true,
@@ -34,29 +33,5 @@ export default class DashboardView extends JetView{
 				}
 			]
 		};
-	}
-	ready(){
-		const viewsWithShadows = [];
-		this.getRoot().queryView(function(view){
-			if (view.config.css === "dashboard_panel")
-				viewsWithShadows.push(view);
-		});
-		
-		this.hover = [];
-		this.mouseOut = [];
-		for (let i = 0; i < viewsWithShadows.length; i++){
-			this.hover.push(webix.event(viewsWithShadows[i].$view,"mouseover",() => {
-				webix.html.addCss(viewsWithShadows[i].$view,"webix_shadow_medium");
-			}));
-			this.mouseOut.push(webix.event(viewsWithShadows[i].$view,"mouseout",() => {
-				webix.html.removeCss(viewsWithShadows[i].$view,"webix_shadow_medium");
-			}));
-		}
-	}
-	destroy(){
-		for (let i = 0; i < this.hover.length; i++)
-			webix.eventRemove(this.hover[i]);
-		for (let i = 0; i < this.mouseOut.length; i++)
-			webix.eventRemove(this.mouseOut[i]);
 	}
 }

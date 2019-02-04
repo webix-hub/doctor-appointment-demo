@@ -3,12 +3,13 @@ import {JetApp, HashRouter } from "webix-jet";
 
 export default class MyApp extends JetApp{
 	constructor(config){
-		let theme = "";
+		let theme = "", shadows = "";
 		try {
 			theme = webix.storage.session.get("doctor_demo_theme");
+			shadows = webix.storage.session.get("doctor_demo_shadows");
 		}
 		catch(err){
-			webix.message("You blocked cookies. Theme won't be restored after page reload.","debug");
+			webix.message("You blocked cookies. Themes and shadows won't be restored after page reload.","debug");
 		}
 
 		const size = () => {
@@ -23,6 +24,7 @@ export default class MyApp extends JetApp{
 			debug 		: !PRODUCTION,
 			start 		: "/login",
 			theme		: theme || "",
+			shadows		: shadows || "",
 			size		: size()
 		};
 

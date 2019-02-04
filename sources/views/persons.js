@@ -4,14 +4,13 @@ import "webix/nstateicon";
 
 export default class PersonsView extends JetView {
 	config(){
-		const theme = this.app.config.theme;
 		const size = this.app.config.size;
 
 		return {
-			css:"dashboard_panel",
+			css:this.app.config.shadows,
 			rows:[
 				{
-					view:"toolbar", css:theme,
+					view:"toolbar", css:this.app.config.theme,
 					localId:"toolbar",
 					visibleBatch:"default",
 					elements:[
