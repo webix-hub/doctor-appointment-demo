@@ -4,13 +4,12 @@ import "webix/nstateicon";
 
 export default class FriendsView extends JetView {
 	config(){
-		const theme = this.app.config.theme;
-
 		return {
 			rows:[
 				{
-					view:"toolbar", css:theme, elements:[
-						{ view:"label", template:"Friends", localId:"header", width:110 },
+					view:"toolbar", css:this.app.config.theme,
+					elements:[
+						{ view:"label", template:"Friends", localId:"header", width:140 },
 						{},
 						{
 							view:"nstateicon", tooltip:true, tip:"Show",
@@ -24,8 +23,9 @@ export default class FriendsView extends JetView {
 							on:{
 								onStateChange:function(state){
 									const list = this.$scope.$$("list");
-									list.filter("status",this.config.states[--state]);
-									this.$scope.$$("header").setHTML(`Friends (${list.count()})`);
+									list.filter("status",this.config.states[state-1]);
+									console.log(state);
+									this.$scope.$$("header").setHTML(`Friends ${state? "online" :""} (${list.count()})`);
 								}
 							}
 						},

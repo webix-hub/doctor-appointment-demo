@@ -15,11 +15,12 @@ webix.protoUI({
 			view:"form", id:id, borderless:true, padding:0, margin:10,
 			cols:[
 				{
-					view:"multiselect", label:"Day(s)", labelWidth:50, name:"day",
+					view:"multiselect", label:"Day(s)", labelWidth:65, name:"day",
 					options:webix.copy(days)
 				},
+				{ width:5 },
 				{
-					view:"richselect", name:"time", label:"Time", labelWidth:50,
+					view:"richselect", name:"time", label:"Time", labelWidth:65,
 					options:options
 				},
 				{

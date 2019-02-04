@@ -95,7 +95,7 @@ export default class InformationView extends JetView {
 
 		return {
 			view:"form", css:this.app.config.shadows,
-			margin:20, minWidth:260,
+			margin:20, minWidth:260, borderless:false,
 			cols:size !== "small" ? wideConf : narrowConf
 		};
 	}

@@ -9,6 +9,7 @@ export default class DashboardView extends JetView{
 	config(){
 		const form_and_chat = {
 			type:"wide", margin:10, padding:{ top:11, bottom:10, right:2, left:2 },
+			borderless:true,
 			cols:[ StatisticsView, InformationView	]
 		};
 

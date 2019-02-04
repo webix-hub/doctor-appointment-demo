@@ -14,6 +14,7 @@ export default class SettingsView extends JetView {
 			view:"form",
 			elements:[
 				{
+					margin:6,
 					rows:[
 						{ type:"section", template:"Change password" },
 						{
@@ -67,7 +68,12 @@ export default class SettingsView extends JetView {
 						{ view:"switch", name:"notifications_upcoming", labelWidth:0, labelRight:"Upcoming appointments" },
 						{ view:"switch", name:"notifications_cancelled", labelWidth:0, labelRight:"Cancelled appointments" },
 						{ view:"switch", name:"notifications_friends", labelWidth:0, labelRight:"New friends" },
-						{ view:"switch", name:"notifications_messages", labelWidth:0, labelRight:"New messages" },
+						{ view:"switch", name:"notifications_messages", labelWidth:0, labelRight:"New messages" }
+					]
+				},
+				{
+					margin:6,
+					rows:[
 						{ type:"section", template:"Linked accounts" },
 						{ view:"text", name:"linkedin", validate:isLink, label:"LinkedIn", labelWidth:130 },
 						{ view:"text", name:"instagram", validate:isLink, label:"Instagram", labelWidth:130 },

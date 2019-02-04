@@ -12,7 +12,13 @@ export default class ToolView extends JetView {
 			height:56,
 			elements:[
 				{ width:4 },
-				{ css:theme ? "logo_inverted" : "logo" },
+				{
+					view:"template", borderless:true, width:100,
+					css:"main_link " + (theme ? "logo_inverted" : "logo"),
+					onClick:{
+						"main_link":() => window.open("https://webix.com")
+					}
+				},
 				{},
 				{
 					paddingY:7,
@@ -59,7 +65,7 @@ export default class ToolView extends JetView {
 				const pos = webix.html.offset(this.$$("user:avatar").$view);
 				this.tip.show({
 					value:"Click the user avatar to open the profile"
-				},{ x:pos.x, y:pos.y+10 });
+				},{ x:pos.x, y:pos.y+5 });
 			},null,null,1000);
 		}
 	}

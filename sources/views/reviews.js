@@ -4,13 +4,10 @@ import "webix/nstateicon";
 
 export default class ReviewsView extends JetView {
 	config(){
-		const theme = this.app.config.theme;
-
 		return {
-			minHeight:300,
 			rows:[
 				{
-					view:"toolbar", css:theme, elements:[
+					view:"toolbar", css:this.app.config.theme, elements:[
 						{ view:"label", template:"Reviews" },
 						{},
 						{

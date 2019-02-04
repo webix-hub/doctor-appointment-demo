@@ -123,8 +123,8 @@ export default class LoginView extends JetView{
 
 		this._tipEvent = webix.event(this.$$("tip").$view,"click",(e) => {
 			const coordinates = webix.html.pos(e);
-			coordinates.x += 50;
-			coordinates.y += 10;
+			coordinates.x -= 80;
+			coordinates.y += 20;
 			webix.delay(() => this._loginTip.show(this._loginData,coordinates));
 		});
 	}

@@ -23,7 +23,7 @@ export default class RegistryView extends JetView {
 							id:"type", header:"", sort:"int",
 							width:34,
 							template:data => {
-								let type = (data.type === 1) ? "gold" : "grey";
+								let type = (data.type == 1) ? "gold" : "grey";
 								return `<span class='webix_icon mdi mdi-star ${type}'></span>`;
 							}
 						},
@@ -42,6 +42,14 @@ export default class RegistryView extends JetView {
 					],
 					on:{
 						onAfterSelect:record => this.app.callEvent("record:select",[record])
+					},
+					onClick:{
+						"mdi-star":(ev,record) => {
+							const old_type = persons.getItem(record.row).type;
+							const new_type = old_type == 1 ? 2 : 1;
+							persons.updateItem(record.row,{ type:new_type });
+							return false;
+						}
 					}
 				}
 			]

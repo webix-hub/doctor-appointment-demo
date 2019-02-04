@@ -3,11 +3,17 @@
 	padding:0;
 	text-align:center;
 }
+.main_link{
+	cursor: pointer;
+}
 .logo{
 	background:url(webix-logo.svg) 2px 2px no-repeat;
 }
 .logo_inverted{
 	background:url(webix-logo-inv.svg) 2px 2px no-repeat;
+}
+.logo_inverted .webix_template{
+	background-color:transparent !important;
 }
 .webix_view.toolbar_photo > div{
 	padding:0px;
@@ -54,8 +60,10 @@
 	line-height:20px; 
 }
 .webix_el_richselect.patients_filter .webix_el_box .webix_inp_static{
-	font-size:12px;
 	border:0px;
+	font-size:16px;
+	line-height: 32px !important;
+	font-weight:500;
 }
 .persons_list .webix_list_item,
 .persons_list .webix_list_item.webix_selected{
@@ -162,7 +170,7 @@
 	font-size:12px !important;
 }
 .status.online, .webix_icon.mdi.mdi-toggle-switch{
-	color:#8BC34A;
+	color:#55CD97;
 }
 .status.offline{
 	color:#FF9800;
@@ -200,6 +208,9 @@
 .webix_label_right{
 	padding-left:10px;
 }
-.theme_switch .webix_label_right{
-	font-weight:500;
+.webix_el_switch.theme_switch .webix_switch_box{
+	width:80px !important;
+}
+.webix_el_switch.theme_switch .webix_switch_box.webix_switch_on .webix_switch_handle{
+	left:58px !important;
 }

@@ -14,8 +14,9 @@ webix.protoUI({
 		return {
 			view:"form", id:id, borderless:true, padding:0,
 			cols:[
-				{ view:"text", label:"Step", labelWidth:50, name:"step" },
-				{ view:"daterangepicker", stringResult:true, name:"time", label:"When", labelWidth:50 }, 
+				{ view:"text", label:"Step", labelWidth:65, name:"step" },
+				{ width:5 },
+				{ view:"daterangepicker", stringResult:true, name:"time", label:"When", labelWidth:65 }, 
 				{
 					view:"icon", icon:"wxi-"+mode+"-circle", 
 					click:() => { 

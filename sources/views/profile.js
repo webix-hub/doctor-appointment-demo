@@ -13,27 +13,31 @@ export default class ProfileView extends JetView {
 			width:310,
 			rows:[
 				MainInfoView,
-				ReviewsView
+				ReviewsView,
+				{}
 			]
 		};
 		const midBar = {
-			rows:[
-				{
-					view:"toolbar", css:theme,
-					paddingX:17, elements:[
-						{
-							view:"segmented", localId:"segmented",
-							width:300,
-							options:[
-								{ id:"profileinfo", value:"About" },
-								{ id:"settings", value:"Settings" }
-							]
-						},
-						{}
-					]
-				},
-				{ $subview:true }
-			]
+			view:"scrollview", borderless:true,
+			body:{
+				rows:[
+					{
+						view:"toolbar", css:theme,
+						paddingX:17, elements:[
+							{
+								view:"segmented", localId:"segmented",
+								width:300,
+								options:[
+									{ id:"profileinfo", value:"About" },
+									{ id:"settings", value:"Settings" }
+								]
+							},
+							{}
+						]
+					},
+					{ $subview:true }
+				]
+			}
 		};
 		const friendsList = {
 			type:"wide",
@@ -51,11 +55,8 @@ export default class ProfileView extends JetView {
 		];
 
 		return {
-			view:"scrollview", borderless:true,
-			body:{
-				type:"space",
-				cols:size !== "small" ? wideConf : narrowConf
-			}
+			type:"space",
+			cols:size !== "small" ? wideConf : narrowConf
 		};
 	}
 	init(){

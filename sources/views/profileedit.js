@@ -12,15 +12,15 @@ export default class ProfileEditView extends JetView {
 		return {
 			view:"form", borderless:true, elements:[
 				{
-					view:"text", name:"doctor", label:"Name", labelWidth:55,
+					view:"text", name:"doctor", label:"Name", labelWidth:65,
 					validate:webix.rules.isNotEmpty
 				},
-				{ view:"textarea", name:"about", height:160, label:"About", labelPosition:"top" },
+				{ view:"textarea", name:"about", height:160, label:"About", labelWidth:65, },
 				{ label:"Schedule", labelPosition:"top", view:"multitime", name:"schedule" },
 				{ view:"label", label:"Contact Info" },
-				{ view:"text", label:"Email", name:"email", labelWidth:75, validate:isEmail },
-				{ view:"text", label:"Phone", name:"phone", labelWidth:75, pattern:webix.patterns.phone },
-				{ view:"text", label:"Address", name:"address", labelWidth:75 },
+				{ view:"text", label:"Email", name:"email", labelWidth:65, validate:isEmail },
+				{ view:"text", label:"Phone", name:"phone", labelWidth:65, pattern:webix.patterns.phone },
+				{ view:"text", label:"Address", name:"address", labelWidth:65 },
 				{
 					// outer layout for multiline control
 					rows:[
@@ -29,7 +29,7 @@ export default class ProfileEditView extends JetView {
 					]
 				},
 				{ label:"Qualification", labelPosition:"top", view:"multidate", name:"qualification"},
-				{ view:"textarea", name:"hobbies", height:100, label:"Hobbies", labelPosition:"top" }
+				{ view:"textarea", name:"hobbies", height:100, label:"Hobbies", labelWidth:65 }
 			]
 		};
 	}
