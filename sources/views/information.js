@@ -94,7 +94,7 @@ export default class InformationView extends JetView {
 		];
 
 		return {
-			view:"form",
+			view:"form", css:"dashboard_panel",
 			margin:20, minWidth:260,
 			cols:size !== "small" ? wideConf : narrowConf
 		};

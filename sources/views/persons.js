@@ -8,6 +8,7 @@ export default class PersonsView extends JetView {
 		const size = this.app.config.size;
 
 		return {
+			css:"dashboard_panel",
 			rows:[
 				{
 					view:"toolbar", css:theme,

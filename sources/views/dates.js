@@ -6,6 +6,7 @@ export default class DatesView extends JetView{
 		start.setDate(start.getDate() - 3);
 
 		return {
+			css:"dashboard_panel",
 			view:"calendar",
 			width:size !== "small" ? 271 : 240,
 			icons:true,

@@ -6,6 +6,7 @@ export default class RegistryView extends JetView {
 		const theme = this.app.config.theme;
 
 		return {
+			css:"dashboard_panel",
 			minHeight:360,
 			rows:[
 				{

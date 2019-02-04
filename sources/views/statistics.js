@@ -6,6 +6,7 @@ export default class StatisticsView extends JetView {
 		const size = this.app.config.size;
 
 		return {
+			css:"dashboard_panel",
 			type:"clean",
 			rows:[
 				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
