@@ -105,10 +105,6 @@
 .webix_icon.mdi-star.grey{
 	color:lightgrey;
 }
-/* iframes */
-.webix_view.ifr_template > .webix_disabled{
-	opacity:1 !important;
-}
 /* login form */
 .link .webix_template{
 	color:rgb(28, 161, 193);
