@@ -24,7 +24,6 @@ export default class FriendsView extends JetView {
 								onStateChange:function(state){
 									const list = this.$scope.$$("list");
 									list.filter("status",this.config.states[state-1]);
-									console.log(state);
 									this.$scope.$$("header").setHTML(`Friends ${state? "online" :""} (${list.count()})`);
 								}
 							}

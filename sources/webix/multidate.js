@@ -25,7 +25,7 @@ webix.protoUI({
 					}
 				}
 			]
-		}
+		};
 	},
 	addInput:function(){
 		const section = this.getBody().addView(this._getForm("minus"));
@@ -56,13 +56,13 @@ webix.protoUI({
 		}
 	
 		this._inputs.forEach((view, i) => {
-			$$(view).setValues(value[i]);
+			webix.$$(view).setValues(value[i]);
 		});
 	},
 	getValue(){
 		let values = [];
 		this._inputs.forEach((view) => {
-			const vs = $$(view).getValues();
+			const vs = webix.$$(view).getValues();
 			//if (vs["step"] || (vs["time"].start && vs["time"].end))
 			if (!this._isEmpty(vs))
 				values.push(vs);
@@ -73,8 +73,7 @@ webix.protoUI({
 		for (let i in obj){
 			if (typeof obj[i] === "object")
 				return this._isEmpty(obj[i]);
-			else
-				if (obj[i]) return false;
+			else if (obj[i]) return false;
 		}
 		return true;
 	}
