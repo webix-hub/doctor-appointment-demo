@@ -63,7 +63,7 @@ export default class SettingsView extends JetView {
 				{
 					rows:[
 						{ type:"section", template:"Notification settings" },
-						{ view:"label", template:"Receive notifications on these events:" },
+						{ view:"label", label:"Receive notifications on these events:" },
 						{ view:"switch", name:"notifications_mentions", labelWidth:0, labelRight:"Mentions" },
 						{ view:"switch", name:"notifications_upcoming", labelWidth:0, labelRight:"Upcoming appointments" },
 						{ view:"switch", name:"notifications_cancelled", labelWidth:0, labelRight:"Cancelled appointments" },

@@ -8,13 +8,13 @@ export default class AboutView extends JetView {
 		return {
 			margin:1,
 			rows:[
-				{ view:"label", template:"About", css:"about_label" },
+				{ view:"label", label:"About", css:"about_label" },
 				{					
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
 					template:"#about#"
 				},
-				{ view:"label", template:"Schedule", css:"about_label" },
+				{ view:"label", label:"Schedule", css:"about_label" },
 				{
 					view:"template", localId:"schedule:template", borderless:true,
 					css:"profile_templates", height:48,
@@ -28,7 +28,7 @@ export default class AboutView extends JetView {
 						return result;
 					}
 				},
-				{ view:"label", template:"Contact Info", css:"about_label" },
+				{ view:"label", label:"Contact Info", css:"about_label" },
 				{
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
@@ -43,7 +43,7 @@ export default class AboutView extends JetView {
 						return result;
 					}
 				},
-				{ view:"label", template:"Skills", css:"about_label" },
+				{ view:"label", label:"Skills", css:"about_label" },
 				{
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
@@ -58,7 +58,7 @@ export default class AboutView extends JetView {
 						return result;
 					}
 				},
-				{ view:"label", template:"Qualification", css:"about_label" },
+				{ view:"label", label:"Qualification", css:"about_label" },
 				{
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
@@ -76,7 +76,7 @@ export default class AboutView extends JetView {
 						return result + "</div>";
 					}
 				},
-				{ view:"label", template:"Hobbies", css:"about_label" },
+				{ view:"label", label:"Hobbies", css:"about_label" },
 				{
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,

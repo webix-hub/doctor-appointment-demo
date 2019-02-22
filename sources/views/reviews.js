@@ -8,7 +8,7 @@ export default class ReviewsView extends JetView {
 			rows:[
 				{
 					view:"toolbar", css:this.app.config.theme, elements:[
-						{ view:"label", template:"Reviews" },
+						{ view:"label", label:"Reviews" },
 						{},
 						{
 							view:"nstateicon", tooltip:"Sort by stars",

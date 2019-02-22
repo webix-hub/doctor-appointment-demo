@@ -13,7 +13,7 @@ export default class LoginView extends JetView{
 				{
 					cols:[
 						{},
-						{ view:"label", template:"Log Into Doctor Appointment Demo", width:232 },
+						{ view:"label", label:"Log Into Doctor Appointment Demo", width:232 },
 						{}
 					]
 				}

@@ -10,7 +10,7 @@ export default class RegistryView extends JetView {
 				{
 					view:"toolbar", css:this.app.config.theme,
 					elements:[
-						{ view:"label", template:"Visits" }
+						{ view:"label", label:"Visits" }
 					]
 				},
 				{

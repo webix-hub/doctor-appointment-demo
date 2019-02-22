@@ -8,7 +8,7 @@ export default class ProfileInfoView extends JetView {
 			rows:[
 				{
 					view:"toolbar", borderless:true, elements:[
-						{ view:"label", template:"Personal info", css:"about_label" },
+						{ view:"label", label:"Personal info", css:"about_label" },
 						{},
 						this.editButtons("top"),
 						{
