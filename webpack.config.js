@@ -46,8 +46,7 @@ module.exports = function(env) {
 			extensions: [".js"],
 			modules: ["./sources", "node_modules"],
 			alias:{
-				"jet-views":path.resolve(__dirname, "sources/views"),
-				"jet-locales":path.resolve(__dirname, "sources/locales")
+				"jet-views":path.resolve(__dirname, "sources/views")
 			}
 		},
 		plugins: [
@@ -69,6 +68,8 @@ module.exports = function(env) {
 
 	if (!production){
 		config.devtool = "inline-source-map";
+	} else {
+		config.devtool = "source-map";
 	}
 
 	if (asmodule){
@@ -82,8 +83,6 @@ module.exports = function(env) {
 
 		out.library = pack.name.replace(/[^a-z0-9]/gi, "");
 		out.libraryTarget= "umd";
-		out.path = path.join(__dirname, "dist", sub);
-		out.publicPath = "/dist/"+sub+"/";
 	}
 
 	return config;
