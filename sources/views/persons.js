@@ -31,7 +31,7 @@ export default class PersonsView extends JetView {
 								}
 							}
 						},
-						{},
+						{ batch:"default" },
 						{
 							view:"text", batch:"search", localId:"search",
 							on:{

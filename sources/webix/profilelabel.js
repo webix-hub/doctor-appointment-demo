@@ -10,4 +10,4 @@ webix.protoUI({
 		this.setHTML(this.config.template(value));
 		this.config.value = value;
 	}
-}, webix.ui.label);
+}, webix.ui.template);

@@ -12,7 +12,7 @@ export default class FriendsView extends JetView {
 						{ view:"label", label:"Friends", localId:"header", width:140 },
 						{},
 						{
-							view:"nstateicon", tooltip:true, tip:"Show",
+							view:"nstateicon", tooltip:"Show online/all",
 							icons:[
 								"mdi mdi-toggle-switch-off-outline",
 								"mdi mdi-toggle-switch"

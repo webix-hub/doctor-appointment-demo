@@ -129,16 +129,16 @@
 	border:none;
 }
 /* profile main info */
-.webix_el_profilelabel.doc_main .doc_name,
-.webix_el_profilelabel.doc_main .doc_field{
+.doc_main .doc_name,
+.doc_main .doc_field{
 	display:block;
 }
-.webix_el_profilelabel.doc_main .doc_name{
+.doc_main .doc_name{
 	font-size:16px;
 	font-weight:500;
 	padding-top:8px;
 }
-.webix_el_profilelabel.doc_main{
+.doc_main{
 	text-align:center;
 }
 .webix_view.profile_photo > div,

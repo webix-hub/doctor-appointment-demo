@@ -28,10 +28,12 @@ export default class MainInfoView extends JetView {
 				},
 				{
 					view:"profilelabel", css:"doc_main", name:"doctor",
+					borderless:true,
 					template:obj => `<span class="doc_name">Dr. ${obj}</span>`
 				},
 				{
 					view:"profilelabel", css:"doc_main", name:"job",
+					borderless:true,
 					template:obj => `<span class="doc_field">${obj}</span>`
 				},
 				{

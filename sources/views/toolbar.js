@@ -27,7 +27,7 @@ export default class ToolView extends JetView {
 							margin:8,
 							cols:[
 								{
-									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" title=\"Open your profile\">",
+									template:"<image class=\"mainphoto\" src=\"data/photos/dr_arienette_1.jpg\" webix_tooltip=\"Open your profile\">",
 									width:40, borderless:true, css:"toolbar_photo",
 									localId:"user:avatar",
 									onClick:{
@@ -55,6 +55,8 @@ export default class ToolView extends JetView {
 	init(){
 		this.profileMenu = this.ui(ProfileMenuView);
 		this.themeSettings = this.ui(ThemeSettingsView);
+
+		webix.TooltipControl.addTooltip(this.$$("user:avatar").$view);
 
 		if (this.getUrl()[1].page === "dashboard"){
 			this.tip = webix.ui({
