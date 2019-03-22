@@ -4,10 +4,10 @@ webix.protoUI({
 		config.body = {
 			margin:5, rows:[this._getForm("plus")]
 		};
-	
+
 		this.$ready.push(() => {
 			this._inputs = [this.queryView("form").config.id];
-		});  
+		});
 	},
 	_getForm:function(mode){
 		const id = webix.uid();
@@ -16,11 +16,11 @@ webix.protoUI({
 			cols:[
 				{ view:"text", label:"Step", labelWidth:65, name:"step" },
 				{ width:5 },
-				{ view:"daterangepicker", stringResult:true, name:"time", label:"When", labelWidth:65 }, 
+				{ view:"daterangepicker", stringResult:true, name:"time", label:"When", labelWidth:65 },
 				{
-					view:"icon", icon:"wxi-"+mode+"-circle", 
-					click:() => { 
-						if (mode == "plus") this.addInput(); 
+					view:"icon", icon:"wxi-"+mode+"-circle",
+					click:() => {
+						if (mode == "plus") this.addInput();
 						else  this.removeInput(id);
 					}
 				}
@@ -41,10 +41,10 @@ webix.protoUI({
 		this.getBody().removeView(id);
 	},
 	setValue(value){
-		const dataLines = value.length; 
+		const dataLines = value.length;
 		const inputs = this.getChildViews().length;
-		const delta = dataLines - inputs;  
-	
+		const delta = dataLines - inputs;
+
 		if (delta > 0){
 			for (let i = 0; i < delta; i++)
 				this.addInput(this);
@@ -54,7 +54,7 @@ webix.protoUI({
 				this.removeInput(inputs-i-1);
 			}
 		}
-	
+
 		this._inputs.forEach((view, i) => {
 			webix.$$(view).setValues(value[i]);
 		});
@@ -63,7 +63,6 @@ webix.protoUI({
 		let values = [];
 		this._inputs.forEach((view) => {
 			const vs = webix.$$(view).getValues();
-			//if (vs["step"] || (vs["time"].start && vs["time"].end))
 			if (!this._isEmpty(vs))
 				values.push(vs);
 		});

@@ -13,7 +13,7 @@ webix.protoUI({
 			if (config.icons && state >= config.icons.length)
 				state = 0;
 			this.config.state = state;
-			
+
 			if (config.icons)
 				this.config.icon = config.icons[state];
 

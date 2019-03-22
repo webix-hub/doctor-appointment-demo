@@ -9,7 +9,7 @@ export default class AboutView extends JetView {
 			margin:1,
 			rows:[
 				{ view:"label", label:"About", css:"about_label" },
-				{					
+				{
 					view:"template", borderless:true,
 					css:"profile_templates", autoheight:true,
 					template:"#about#"

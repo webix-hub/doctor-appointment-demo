@@ -7,7 +7,7 @@ export default class StatisticsView extends JetView {
 			css:this.app.config.shadows,
 			type:"clean", minWidth:196,
 			rows:[
-				{ template:"Total visits", type:"header", css:"webix_header chart_header" },
+				{ template:"Total visits", type:"header", css:"chart_header" },
 				{
 					localId:"chart", view:"chart",
 					type:"bar", barWidth:20,

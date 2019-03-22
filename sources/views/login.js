@@ -81,7 +81,7 @@ export default class LoginView extends JetView{
 									on:{
 										onSearchIconClick: function(){
 											var theInput = this.config.type;
-	
+
 											if (theInput !== "password") {
 												this.config.icon = "wxi-eye";
 												this.config.type = "password";
@@ -109,14 +109,14 @@ export default class LoginView extends JetView{
 	}
 	init(){
 		this.$$("name").focus();
-		
+
 		// for demo only
 		this._loginData = getLoginData();
 
 		this.$$("name").setValue(this._loginData.user);
 		this.$$("pswd").setValue(this._loginData.password);
 
-		this._loginTip = webix.ui({
+		this._loginTip = this.ui({
 			view:"tooltip",
 			template:"Don't worry.<br>Login is #user#<br>Password is #password#"
 		});

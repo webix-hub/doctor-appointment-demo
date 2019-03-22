@@ -8,10 +8,8 @@ export default class RegistryView extends JetView {
 			minHeight:360,
 			rows:[
 				{
-					view:"toolbar", css:this.app.config.theme,
-					elements:[
-						{ view:"label", label:"Visits" }
-					]
+					type:"header", css:"webix_header " + this.app.config.theme,
+					template:"Visits"
 				},
 				{
 					view:"datatable",

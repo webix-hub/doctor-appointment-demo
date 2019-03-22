@@ -64,10 +64,14 @@ export default class ToolView extends JetView {
 				template:"#value#"
 			});
 			webix.delay(() => {
-				const pos = webix.html.offset(this.$$("user:avatar").$view);
-				this.tip.show({
-					value:"Click the user avatar to open the profile"
-				},{ x:pos.x, y:pos.y+5 });
+				const ava = this.$$("user:avatar");
+				if (ava){
+					const pos = webix.html.offset(this.$$("user:avatar").$view);
+					this.tip.show({
+						value:"Click the user avatar to open the profile"
+					},{ x:pos.x, y:pos.y+5 });
+					webix.delay(() => this.tip.hide(), null, null, 2000);
+				}
 			},null,null,1000);
 		}
 	}

@@ -54,7 +54,7 @@ export default class InformationView extends JetView {
 					view:"button", value:"Reset",
 					click:() => this.getRoot().setValues(this._currData)
 				},
-				{ 
+				{
 					view:"button", value:"Save", type:"form",
 					click:() => {
 						if (this.getRoot().validate())

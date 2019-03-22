@@ -13,7 +13,7 @@ export default class ProfileInfoView extends JetView {
 						this.editButtons("top"),
 						{
 							view:"icon", icon:"mdi mdi-pencil",
-							localId:"edit:icon", 
+							localId:"edit:icon",
 							click:() => {
 								this.show("profileedit");
 								this.showButtons();
